@@ -1,5 +1,16 @@
 package pl.pjm77.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.mindrot.jbcrypt.BCrypt;
+
 @Entity
 public class User {
 
@@ -11,18 +22,22 @@ public class User {
 		@NotNull
 		@Column(nullable=false, unique = true)
 		private String userName;
+		
 		@NotBlank
 		@NotNull
 		@Column(nullable=false)
 		private String password;
+		
 		@NotNull
 		@Column(nullable=false)
 		private boolean enabled;
+		
 		@NotBlank
 		@NotNull
 		@Column(nullable=false, unique = true)
 		@Email
 		private String email;
+		
 		public String getUserName() {
 			return userName;
 		}
@@ -33,7 +48,7 @@ public class User {
 			return password;
 		}
 		public void setPassword(String password) {
-			this.password = password;
+			this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 		}
 		public boolean isEnabled() {
 			return enabled;
