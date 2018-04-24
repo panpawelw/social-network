@@ -1,4 +1,4 @@
-package pl.pjm77.app;
+package pl.pjm77.config;
 
 import javax.persistence.EntityManagerFactory;
 
