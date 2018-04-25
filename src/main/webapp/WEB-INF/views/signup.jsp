@@ -7,6 +7,6 @@
 <title>Add new user</title>
 </head>
 <body>
-
+	<h1>Add user</h1>
 </body>
 </html>

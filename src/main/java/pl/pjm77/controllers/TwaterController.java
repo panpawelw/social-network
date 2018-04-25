@@ -10,4 +10,14 @@ public class TwaterController {
 	public String twater() {
 		return "twater";
 	}
+	
+	@GetMapping("/signin")
+	public String signIn() {
+		return "signin";
+	}
+	
+	@GetMapping("/signup")
+	public String signUp() {
+		return "signup";
+	}
 }
