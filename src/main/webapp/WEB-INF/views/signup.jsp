@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new user</title>
+<title>Sign Up</title>
 </head>
 <body>
-	<h1>Add user</h1>
+	<br><br><br>
+	<h3 align='center'>Sign Up</h3>
+	<div align='center'>
+		<form action='signup' method='POST'>
+			<input type='text' name='username' placeholder='your username'/><br><br>
+			<input type='text' name='email' placeholder='your email'/><br><br>
+			<input type='password' name='password' placeholder='your password'/><br><br>
+			<input type='password' name='confirm' placeholder='confirm password'/><br><br><br>
+			<input type='submit' value='Sign Up'/>
+		</form>
+	</div>
 </body>
 </html>

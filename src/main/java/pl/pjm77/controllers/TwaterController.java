@@ -18,12 +18,17 @@ public class TwaterController {
 	}
 	
 	@GetMapping("/signup")
-	public String signUp() {
+	public String signUpForm() {
 		return "signup";
 	}
 	
 	@PostMapping("/signin")
 	public String signInAction() {
-		return "twater";
+		return "redirect:/";
+	}
+	
+	@PostMapping("/signup")
+	public String signUpAction() {
+		return "redirect:/";
 	}
 }

@@ -4,16 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Sign In</title>
 </head>
 <body>
 	<br><br><br>
 	<h3 align='center'>Sign In</h3>
 	<div align='center'>
 		<form action='signin' method='POST'>
-			<input type='text' name='email' placeholder='your email address'/>
-			<input type='password' name='password' placeholder='your password'/>
-			<br><br>
+			<input type='text' name='username' placeholder='your username'/><br><br>
+			<input type='password' name='password' placeholder='your password'/><br><br><br>
 			<input type='submit' value='Sign In'/>
 		</form>
 	</div>
