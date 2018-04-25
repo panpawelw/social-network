@@ -7,6 +7,15 @@
 <title>Login</title>
 </head>
 <body>
-	<h1>Login</h1>
+	<br><br><br>
+	<h3 align='center'>Sign In</h3>
+	<div align='center'>
+		<form action='signin' method='POST'>
+			<input type='text' name='email' placeholder='your email address'/>
+			<input type='password' name='password' placeholder='your password'/>
+			<br><br>
+			<input type='submit' value='Sign In'/>
+		</form>
+	</div>
 </body>
 </html>
