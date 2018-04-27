@@ -1,10 +1,18 @@
 package pl.pjm77.controllers;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import pl.pjm77.entities.User;
 import pl.pjm77.repositories.UserRepository;
@@ -30,6 +38,18 @@ public class TwaterController {
 		return "signup";
 	}
 	
+	@GetMapping("/signinerror1")
+	public String signInFormError1() {
+		return "signin";
+	}
+	
+	@GetMapping("/signuperror1")
+	public String signUpFormError1(Model model, @RequestParam String username, String email) {
+		System.out.println(username + " , " + email);
+		model.addAttribute("passError", "Passwords don't match! Try again!");
+		return "signup";
+	}
+	
 	@PostMapping("/signin")
 	public String signInAction(@RequestParam String username, String password) {
 		System.out.println("username: " + username + ", password: " + password);
@@ -37,13 +57,19 @@ public class TwaterController {
 	}
 	
 	@PostMapping("/signup")
-	public String signUpAction(@RequestParam String username, String email, String password, String confirm ) {
+	public String signUpAction(Model model, @RequestParam String username, String email, String password, String confirm) {
 		System.out.println("username: " + username + ", email: " + email + ", password: " + password + ", confirm: " + confirm);
-		User user = new User();
-		user.setUserName(username);
-		user.setEmail(email);
-		user.setPassword(password);
-		userRepository.saveUser(user);
-		return "redirect:/";
+		if(password.equals(confirm)) {
+			User user = new User();
+			user.setUserName(username);
+			user.setEmail(email);
+			user.setPassword(password);
+			userRepository.saveUser(user);
+			return "";
+		}else {
+		    model.addAttribute("username", username);
+		    model.addAttribute("email", email);
+		    return "redirect:/signuperror1/";
+		}
 	}
 }
