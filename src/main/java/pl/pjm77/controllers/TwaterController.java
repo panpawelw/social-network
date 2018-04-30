@@ -52,7 +52,9 @@ public class TwaterController {
 	
 	@PostMapping("/signin")
 	public String signInAction(@RequestParam String username, String password) {
-		System.out.println("username: " + username + ", password: " + password);
+		User user = new User();
+		user = userRepository.findUserByUsername(username);
+		System.out.println(user.toString());
 		return "redirect:/";
 	}
 	

@@ -67,4 +67,9 @@ public class User {
 		public long getId() {
 			return id;
 		}
+		@Override
+		public String toString() {
+			return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
+					+ ", email=" + email + "]";
+		}
 }
