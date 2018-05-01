@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,9 @@ public class TwaterController {
 	}
 	
 	@GetMapping("/signinerror1")
-	public String signInFormError1() {
+	public String signInFormError1(Model model, @RequestParam String username) {
+		System.out.println(username);
+		model.addAttribute("passError", "Wrong username or password!");
 		return "signin";
 	}
 	
@@ -51,11 +54,16 @@ public class TwaterController {
 	}
 	
 	@PostMapping("/signin")
-	public String signInAction(@RequestParam String username, String password) {
+	public String signInAction(Model model, @RequestParam String username, String password) {
 		User user = new User();
 		user = userRepository.findUserByUsername(username);
 		System.out.println(user.toString());
-		return "redirect:/";
+		if(BCrypt.checkpw(password, user.getPassword())) {
+			return "redirect:/";
+		}else {
+			model.addAttribute("username", username);
+			return "redirect:/signinerror1/";
+		}
 	}
 	
 	@PostMapping("/signup")
@@ -63,11 +71,11 @@ public class TwaterController {
 		System.out.println("username: " + username + ", email: " + email + ", password: " + password + ", confirm: " + confirm);
 		if(password.equals(confirm)) {
 			User user = new User();
-			user.setUserName(username);
+			user.setUsername(username);
 			user.setEmail(email);
 			user.setPassword(password);
 			userRepository.saveUser(user);
-			return "";
+			return "redirect:/";
 		}else {
 		    model.addAttribute("username", username);
 		    model.addAttribute("email", email);

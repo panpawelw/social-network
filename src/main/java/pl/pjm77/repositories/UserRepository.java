@@ -2,6 +2,7 @@ package pl.pjm77.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
@@ -21,7 +22,8 @@ public class UserRepository {
 	}
 	
 	public User findUserByUsername(String username) {
-//		Criteria criteria = session.createCriteria(User.class);
-		return entityManager.find(User.class, username);
-	}
+		Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.username LIKE :username").setParameter("username", username);
+		User user = (User) query.getSingleResult();
+		return user;
+	}             
 }

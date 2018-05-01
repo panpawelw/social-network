@@ -11,6 +11,7 @@
 	<br><br><br>
 	<h3 align='center'>Sign In</h3>
 	<div align='center'>
+		<p>${passError}
 		<form action='signin' method='POST'>
 			<input type='text' name='username' placeholder='your username'/><br><br>
 			<input type='password' name='password' placeholder='your password'/><br><br><br>
