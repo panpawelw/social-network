@@ -8,6 +8,7 @@
 <title>Twater</title>
 </head>
 <body>
+	<p align='right'>User: ${loggedInUser}
 	<br><br><br>
 	<h1 align='center'>Twater</h1>
 	<h3 align='center'>Add new twat</h3>
