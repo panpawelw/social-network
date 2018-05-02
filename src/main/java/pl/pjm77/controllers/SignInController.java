@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.pjm77.entities.User;
 import pl.pjm77.repositories.UserRepository;
@@ -27,6 +26,8 @@ public class SignInController {
 	@PostMapping("/")
 	public String signInAction(@ModelAttribute User user) {
 		System.out.println(user.toString());
+		User userFromDatabase = userRepository.findByUsername(user.getUsername());
+		System.out.println(userFromDatabase.toString());
 		return "redirect:/twater";
 	}
 }

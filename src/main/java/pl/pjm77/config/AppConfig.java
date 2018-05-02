@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -16,8 +17,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "pl.pjm77")
+@ComponentScan(basePackages="pl.pjm77")
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages="pl.pjm77.repositories")
 public class AppConfig implements WebMvcConfigurer {
 	
 	@Bean

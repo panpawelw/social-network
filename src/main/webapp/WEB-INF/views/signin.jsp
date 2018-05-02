@@ -14,8 +14,8 @@
 	<h3 align='center'>Sign In</h3>
 	<div align='center'>
 		<form:form method='POST' modelAttribute='user'>
-			<form:input path='username'/><br><br>
-			<form:input path='password'/><br><br><br>
+			<form:input path='username' placeholder='username'/><br><br>
+			<form:input path='password' placeholder='password'/><br><br><br>
 			<input type='submit' value='Sign In'/>
 		</form:form>
 		<br>

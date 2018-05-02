@@ -13,9 +13,5 @@
 	<h1 align='center'>Twater</h1>
 	<h3 align='center'>Add new twat</h3>
 	<h3 align='center'>Twat list</h3>
-	<div align='center'>
-		<a href="${pageContext.servletContext.contextPath}/signin">Sign In</a>
-		<a href="${pageContext.servletContext.contextPath}/signup">Sign Up</a>
-	</div>
 </body>
 </html>
