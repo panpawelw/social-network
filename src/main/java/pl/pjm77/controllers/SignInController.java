@@ -24,14 +24,14 @@ public class SignInController {
 	
 	@PostMapping("/")
 	public String signInAction(Model model, @RequestParam String username, String password) {
-		User userFromDatabase = userRepository.findByUsername(username);
-		System.out.println(userFromDatabase.toString());
-		System.out.println(BCrypt.checkpw(password, userFromDatabase.getPassword()));
-		if(BCrypt.checkpw(password, userFromDatabase.getPassword())) {
-			System.out.println("OK!");
+		User user = userRepository.findByUsername(username);
+		if(user==null) {
+			model.addAttribute("usernameError", "This username doesn't exist!");
+			return "signin";
+		}
+		if(BCrypt.checkpw(password, user.getPassword())) {
 			return "redirect:/twater";
 		}else {
-			System.out.println("Error!");
 			model.addAttribute("passwordError", "Incorrect password!");
 			return "signin";
 		}
