@@ -15,17 +15,13 @@
 	<br>
 	<h3 align='center'>Sign Up</h3>
 	<div align='center'>
-		<p>${passError}
-		<form action='signup' method='POST'>
-			<input type='text' name='username' placeholder='your username' /><br>
-			<br> <input type='text' name='email' placeholder='your email' /><br>
-			<br> <input type='password' name='password'
-				placeholder='your password' /><br>
-			<br> <input type='password' name='confirm'
-				placeholder='confirm password' /><br>
-			<br>
-			<br> <input type='submit' value='Sign Up' />
-		</form>
+		<form:form method='POST' modelAttribute='user'>
+			<form:input path='username' placeholder='your username' /><br><br>
+			<form:input path='email' placeholder='your email' /><br><br>
+			<form:input type='password' path='password' placeholder='your password' /><br><br>
+			<input type='password' name='confirm' placeholder='confirm password' /><br><br><br>
+			<input type='submit' value='Sign Up' />
+		</form:form>
 		<br>
 		<form action="${pageContext.servletContext.contextPath}">
 			<input type="submit" value="Cancel" />
