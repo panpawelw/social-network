@@ -30,7 +30,7 @@ public class SignUpController {
 		System.out.println(confirm);
 		if(BCrypt.checkpw(confirm, user.getPassword())) {
 			userRepository.save(user);
-			return "redirect:/twater";
+			return "redirect:/";
 		}else {
 		    return "redirect:/signup";
 		}
