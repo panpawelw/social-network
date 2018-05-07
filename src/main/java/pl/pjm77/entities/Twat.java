@@ -25,12 +25,6 @@ public class Twat {
 	@Column
 	@NotBlank
 	@NotNull
-	@Size(max=50)
-	private String title;
-	
-	@Column
-	@NotBlank
-	@NotNull
 	@Size(max=140)
 	private String text;
 	
@@ -40,14 +34,6 @@ public class Twat {
 	@ManyToOne
 	@JoinColumn
 	private User user;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getText() {
 		return text;
@@ -67,5 +53,18 @@ public class Twat {
 
 	public long getId() {
 		return id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Twat [id=" + id + ", text=" + text + ", created=" + created + ", user=" + user + "]";
 	}
 }

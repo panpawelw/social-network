@@ -34,10 +34,6 @@ public class User {
 		@Column(nullable=false)
 		private String password;
 		
-		@NotNull
-		@Column(nullable=false)
-		private boolean enabled;
-		
 		@NotBlank
 		@NotNull
 		@Column(nullable=false, unique = true)
@@ -59,12 +55,6 @@ public class User {
 		public void setPassword(String password) {
 			this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 		}
-		public boolean isEnabled() {
-			return enabled;
-		}
-		public void setEnabled(boolean enabled) {
-			this.enabled = enabled;
-		}
 		public String getEmail() {
 			return email;
 		}
@@ -76,7 +66,6 @@ public class User {
 		}
 		@Override
 		public String toString() {
-			return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-					+ ", email=" + email + "]";
+			return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "]";
 		}
 }

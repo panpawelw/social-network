@@ -26,8 +26,6 @@ public class SignUpController {
 	
 	@PostMapping("/signup")
 	public String signUpAction(@ModelAttribute User user, @RequestParam String confirm) {
-		System.out.println(user.toString());
-		System.out.println(confirm);
 		if(BCrypt.checkpw(confirm, user.getPassword())) {
 			userRepository.save(user);
 			return "redirect:/";

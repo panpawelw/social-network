@@ -12,7 +12,11 @@
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
 	<h1 align='center'>Twater</h1>
-	<h3 align='center'>Add new twat</h3>
+	<div align='center'>
+		<form action='newtwat' method='GET'>
+			<input type='submit' value='New twat'/>
+		</form>
+	</div>
 	<h3 align='center'>Twat list</h3>
 </body>
 </html>

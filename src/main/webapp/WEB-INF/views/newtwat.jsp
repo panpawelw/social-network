@@ -7,23 +7,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sign Up</title>
+<title>Add new Twat</title>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<h3 align='center'>Sign Up</h3>
+	<h3 align='center'>Add new Twat</h3>
+	<br><br><br>
 	<div align='center'>
-		<form:form method='POST' modelAttribute='user'>
-			<form:input path='username' placeholder='your username' /><br><br>
-			<form:input path='email' placeholder='your email' /><br><br>
-			<form:input type='password' path='password' placeholder='your password' /><br><br>
-			<input type='password' name='confirm' placeholder='confirm password' /><br><br><br>
-			<input type='submit' value='Sign Up' />
+		<form:form method='POST' modelAttribute='twat'>
+			<form:textarea path='text' cols='71' rows='2' maxlength='140' placeholder='Enter maximum of 140 characters...'/><br>
+			<input type='submit' value='Add twat'/>
 		</form:form>
-		<br>
-		<form action='${pageContext.servletContext.contextPath}'>
+		<form action='javascript:history.go(-1)'>
 			<input type='submit' value='Cancel'/>
 		</form>
 	</div>
