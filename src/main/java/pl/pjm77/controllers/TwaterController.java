@@ -37,6 +37,7 @@ public class TwaterController {
 		java.util.Date date = new java.util.Date();
 		java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
 		twat.setCreated(created);
+		twaterRepository.save(twat);
 		System.out.println(twat);
 		return "twater";
 	}

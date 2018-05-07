@@ -4,9 +4,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pl.pjm77.entities.User;
+import pl.pjm77.entities.Twat;
 
 @Transactional
-public interface TwaterRepository extends JpaRepository<User,Long>{
+public interface TwaterRepository extends JpaRepository<Twat,Long>{
 
 }
