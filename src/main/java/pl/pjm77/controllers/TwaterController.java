@@ -1,5 +1,8 @@
 package pl.pjm77.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,9 @@ public class TwaterController {
 	@GetMapping("/twater")
 	public String twater(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
 		model.addAttribute("loggedInUser", loggedInUser);
+		List<Twat> allTwats = new ArrayList<>();
+		allTwats = twaterRepository.findAllByOrderByCreatedDesc();
+		model.addAttribute("allTwats", allTwats);
 		return "twater";
 	}
 	
@@ -39,6 +45,6 @@ public class TwaterController {
 		twat.setCreated(created);
 		twaterRepository.save(twat);
 		System.out.println(twat);
-		return "twater";
+		return "redirect:/twater";
 	}
 }

@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Twater</title>
+<style>
+	table, th, td {
+    border: 1px solid black;
+	}
+</style>
 </head>
 <body>
 	<p align='right'>User: ${loggedInUser.username}
@@ -18,5 +23,16 @@
 		</form>
 	</div>
 	<h3 align='center'>Twat list</h3>
+	<div align='center'>
+		<table>
+			<c:forEach items='${allTwats}' var='twat'>
+				<tr>
+					<td>${twat.created}</td>
+					<td>${twat.user.username}</td>
+					<td>${twat.text}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>
