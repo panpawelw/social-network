@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import pl.pjm77.entities.Twat;
 import pl.pjm77.entities.User;
-import pl.pjm77.repositories.TwaterRepository;
+import pl.pjm77.repositories.TwatRepository;
 
 @Controller
 public class TwaterController {
 	
 	@Autowired
-	private TwaterRepository twaterRepository;
+	private TwatRepository twaterRepository;
 
 	@GetMapping("/twater")
 	public String twater(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {

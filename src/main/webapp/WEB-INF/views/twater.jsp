@@ -28,8 +28,8 @@
 			<c:forEach items='${allTwats}' var='twat'>
 				<tr>
 					<td>${twat.created}</td>
-					<td>${twat.user.username}</td>
-					<td>${twat.text}</td>
+					<td><a href='${pageContext.servletContext.contextPath}/user?id=${twat.user.id}'>${twat.user.username}</a></td>
+					<td><a href='${pageContext.servletContext.contextPath}/twat?id=${twat.id}'>${twat.text}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
