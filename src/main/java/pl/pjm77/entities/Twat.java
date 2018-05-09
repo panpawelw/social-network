@@ -1,6 +1,8 @@
 package pl.pjm77.entities;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -25,15 +28,18 @@ public class Twat {
 	@Column
 	@NotBlank
 	@NotNull
-	@Size(max=140)
+	@Size(max = 140)
 	private String text;
-	
+
 	@Column(nullable = false)
 	private Timestamp created;
-	
+
 	@ManyToOne
 	@JoinColumn
 	private User user;
+
+	@OneToMany(mappedBy = "twat")
+	private List<Comment> comments = new ArrayList<>();
 
 	public String getText() {
 		return text;
@@ -61,10 +67,5 @@ public class Twat {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	@Override
-	public String toString() {
-		return "Twat [id=" + id + ", text=" + text + ", created=" + created + ", user=" + user + "]";
 	}
 }
