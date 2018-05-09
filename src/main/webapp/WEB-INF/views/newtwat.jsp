@@ -17,6 +17,7 @@
 			<form:textarea path='text' cols='71' rows='2' maxlength='140' placeholder='Enter maximum of 140 characters...'/><br>
 			<input type='submit' value='Add twat'/>
 		</form:form>
+		<br>
 		<form action='javascript:history.go(-1)'>
 			<input type='submit' value='Cancel'/>
 		</form>
