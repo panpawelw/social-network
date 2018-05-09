@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1 align='center'>User's own account</h1>
+		<p>${sessionScope.loggedInUser}
 </body>
 </html>

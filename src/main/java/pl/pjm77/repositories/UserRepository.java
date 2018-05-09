@@ -10,7 +10,8 @@ import pl.pjm77.entities.User;
 public interface UserRepository extends JpaRepository<User,Long>{
 
 	User findByUsername(String Username);
-
+	
+	User findById(long id);
 }
 
 //import javax.persistence.EntityManager;
