@@ -14,4 +14,6 @@ public interface TwatRepository extends JpaRepository<Twat,Long>{
 	public List<Twat> findAllByOrderByCreatedDesc();
 	
 	public List<Twat> findAllByUserIdOrderByCreatedDesc(long id);
+	
+	public Twat findById(long id);
 }

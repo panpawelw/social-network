@@ -10,11 +10,11 @@
 <title>User view</title>
 </head>
 <body>
-	<h1 align='center'>User ${user.username}</h1>
+	<h1 align='center'>User ${usersTwats[0].user.username}'s Twat list</h1>
 	<div align='center'>
 		<form method='POST' action='twat'>
 			<textarea name='message' cols='31' rows='4' placeholder='Enter message...'></textarea><br>
-			<input type='submit' value='Send message'/>
+			<input type='submit' value='Send message to ${usersTwats[0].user.username}'/>
 		</form>
 		<br>
 	</div>

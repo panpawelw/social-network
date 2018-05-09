@@ -31,8 +31,6 @@ public class UserController {
 		}else {
 			List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
 			model.addAttribute("usersTwats", usersTwats);
-			User user = userRepository.findById(id);
-			model.addAttribute("user", user);
 			return "userview";
 		}
 	}
