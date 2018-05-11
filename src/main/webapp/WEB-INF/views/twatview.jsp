@@ -7,6 +7,8 @@
 <title>Twat view</title>
 </head>
 <body>
+	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
 	<h1 align='center'>Twat view</h1>
 	<div align='center'>
@@ -20,8 +22,10 @@
 	</div>
 	<h3 align='center'>Comments: x</h3>
 	<div align='center'>
-		<form method='POST' action='twat'>
-			<textarea name='comment' cols='31' rows='2' placeholder='Enter comment...'></textarea><br>
+		<form method='POST' action='addcomment'>
+			<textarea name='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></textarea><br>
+			<input type='hidden' name='userId' value='${loggedInUser.id}'/>
+			<input type='hidden' name='twatId' value='${twat.id}'/>
 			<input type='submit' value='Post comment'/>
 		</form>
 		<br>
