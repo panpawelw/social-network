@@ -24,7 +24,7 @@ public class TwaterController {
 	@GetMapping("/twater")
 	public String twater(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
 		if(loggedInUser.getUsername()==null) {
-			return "signin";
+			return "redirect:/";
 		}
 		model.addAttribute("loggedInUser", loggedInUser);
 		List<Twat> allTwats = new ArrayList<>();
@@ -36,7 +36,7 @@ public class TwaterController {
 	@GetMapping("/newtwat")
 	public String newTwatForm(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
 		if(loggedInUser.getUsername()==null) {
-			return "signin";
+			return "redirect:/";
 		}
 		model.addAttribute("twat", new Twat());
 		model.addAttribute("loggedInUser", loggedInUser);
@@ -46,7 +46,7 @@ public class TwaterController {
 	@PostMapping("/newtwat")
 	public String newTwatAction(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute Twat twat) {
 		if(loggedInUser.getUsername()==null) {
-			return "signin";
+			return "redirect:/";
 		}
 		twat.setUser(loggedInUser);
 		java.util.Date date = new java.util.Date();

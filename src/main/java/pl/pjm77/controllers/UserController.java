@@ -22,7 +22,7 @@ public class UserController {
 	@GetMapping("user")
 	public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
 		if(loggedInUser.getUsername()==null) {
-			return "signin";
+			return "redirect:/";
 		}
 		List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
 		model.addAttribute("usersTwats", usersTwats);

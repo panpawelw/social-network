@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import pl.pjm77.entities.Comment;
+import pl.pjm77.entities.User;
 import pl.pjm77.repositories.CommentRepository;
 import pl.pjm77.repositories.TwatRepository;
 import pl.pjm77.repositories.UserRepository;
@@ -23,7 +25,10 @@ public class CommentController {
 	UserRepository userRepository;
 	
 	@PostMapping("addcomment")
-	public String addComment(@RequestParam String text, long userId, long twatId) {
+	public String addComment(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam String text, long userId, long twatId) {
+		if(loggedInUser.getUsername()==null) {
+			return "redirect:/";
+		}
 		Comment comment = new Comment();
 		comment.setText(text);
 		java.util.Date date = new java.util.Date();

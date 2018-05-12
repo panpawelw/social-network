@@ -27,7 +27,7 @@ public class TwatController {
 	@GetMapping("twat")
 	public String twatView(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
 		if(loggedInUser.getUsername()==null) {
-			return "signin";
+			return "redirect:/";
 		}
 		Twat twat = twatRepository.findById(id);
 		List<Comment> allComments = commentRepository.findAllByTwatIdOrderByCreatedDesc(id);
