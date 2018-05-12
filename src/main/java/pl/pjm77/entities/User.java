@@ -113,4 +113,9 @@ public class User {
 	public void setReceivedMessages(List<Message> receivedMessages) {
 		this.receivedMessages = receivedMessages;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "]";
+	}
 }
