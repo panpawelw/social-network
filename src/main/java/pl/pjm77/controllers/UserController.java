@@ -27,6 +27,7 @@ public class UserController {
 		List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
 		model.addAttribute("usersTwats", usersTwats);
 		if(loggedInUser.getId()==id){
+			model.addAttribute("user", loggedInUser);
 			return "userownview";
 		}else {
 			return "userview";
