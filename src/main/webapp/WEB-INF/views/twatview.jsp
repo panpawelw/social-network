@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +22,18 @@
 			</tr>
 		</table>
 	</div>
-	<h3 align='center'>Comments: x</h3>
+	<h3 align='center'>Comments: ${fn:length(allComments)}</h3>
 	<div align='center'>
+		<table>
+			<c:forEach items='${allComments}' var='comment'>
+				<tr>
+					<td>${comment.created}</td>
+					<td><a href='${pageContext.servletContext.contextPath}/user?id=${comment.user.id}'>${comment.user.username}</a></td>
+					<td>${comment.text}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<br>
 		<form method='POST' action='addcomment'>
 			<textarea name='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></textarea><br>
 			<input type='hidden' name='userId' value='${loggedInUser.id}'/>

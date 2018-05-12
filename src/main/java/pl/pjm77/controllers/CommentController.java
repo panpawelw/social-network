@@ -32,6 +32,6 @@ public class CommentController {
 		comment.setUser(userRepository.findById(userId));
 		comment.setTwat(twatRepository.findById(twatId));
 		commentRepository.save(comment);
-		return "twat";
+		return "redirect:/twat?id=" + twatId;
 	}
 }
