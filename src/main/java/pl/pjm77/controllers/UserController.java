@@ -21,11 +21,11 @@ public class UserController {
 
 	@GetMapping("user")
 	public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+		List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
+		model.addAttribute("usersTwats", usersTwats);
 		if(loggedInUser.getId()==id){
 			return "userownview";
 		}else {
-			List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
-			model.addAttribute("usersTwats", usersTwats);
 			return "userview";
 		}
 	}

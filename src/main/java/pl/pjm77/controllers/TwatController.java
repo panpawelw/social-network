@@ -30,7 +30,6 @@ public class TwatController {
 		List<Comment> allComments = commentRepository.findAllByTwatIdOrderByCreatedDesc(id);
 		model.addAttribute("allComments", allComments);
 		model.addAttribute("twat", twat);
-		System.out.println(allComments);
 		return "twatview";
 	}
 }
