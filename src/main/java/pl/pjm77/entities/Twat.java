@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class Twat {
 	@JoinColumn
 	private User user;
 
-	@OneToMany(mappedBy = "twat")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "twat", cascade = CascadeType.ALL)
 	private List<Comment> comments = new ArrayList<>();
 
 	public String getText() {
@@ -67,5 +69,13 @@ public class Twat {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 }
