@@ -14,14 +14,13 @@
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
 	<h1 align='center'>Your account</h1>
-	<p>${sessionScope.loggedInUser}
 	<div align='center'>
 		<form:form method='POST' modelAttribute='user'>
 			<form:input path='username' placeholder='your username' /><br><br>
 			<form:input path='email' placeholder='your email' /><br><br>
-			<form:input type='password' path='password' placeholder='your password' /><br><br>
+			<input type='password' name='password' placeholder='your password' /><br><br>
 			<input type='password' name='confirm' placeholder='confirm password' /><br><br><br>
-			<input type='submit' value='Sign Up' />
+			<input type='submit' value='Change details' />
 		</form:form>
 		<br>
 		<form action='${pageContext.servletContext.contextPath}'>

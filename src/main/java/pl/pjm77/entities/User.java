@@ -20,7 +20,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +53,19 @@ public class User {
 
 	@OneToMany(mappedBy = "receiver")
 	private List<Message> receivedMessages = new ArrayList<>();
+	
+//	public User() {}
+//	
+//	public User(User another) {
+//		this.id = another.id;
+//		this.username = another.username;
+//		this.password = another.password;
+//		this.email = another.email;
+//		this.twats = another.twats;
+//		this.comments = another.comments;
+//		this.sentMessages = another.sentMessages;
+//		this.receivedMessages = another.receivedMessages;
+//	}
 
 	public String getUsername() {
 		return username;
