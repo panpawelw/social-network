@@ -43,6 +43,9 @@ public class UserController {
 	@PostMapping("user")
 	public String changeUserDetails(@SessionAttribute ("loggedInUser") User loggedInUser, 
 			@ModelAttribute User user, @RequestParam String password, @RequestParam String confirm){
+		if(loggedInUser.getUsername()==null) {
+			return "redirect:/";
+		}
 		if(password.equals(confirm)) {
 			loggedInUser.setUsername(user.getUsername());
 			loggedInUser.setPassword(password);
