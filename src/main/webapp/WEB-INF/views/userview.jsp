@@ -14,6 +14,12 @@
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
 	<h1 align='center'>User ${usersTwats[0].user.username}'s Twat list</h1>
+		<div align='center'>
+		<form action='${pageContext.servletContext.contextPath}/twater'>
+			<input type='submit' value='Main Page'/>
+		</form>
+	</div>
+	<br>
 	<div align='center'>
 		<form method='POST' action='twat'>
 			<textarea name='message' cols='31' rows='4' placeholder='Enter message...'></textarea><br>

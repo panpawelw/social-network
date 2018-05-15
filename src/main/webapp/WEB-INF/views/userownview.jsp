@@ -39,17 +39,18 @@
 		<div class='column'>
 			<div align='center'>
 				<h1 align='center'>Your account</h1>
+				<form action='${pageContext.servletContext.contextPath}/twater'>
+					<input type='submit' value='Main Page'/>
+				</form>
+				<br>
 				<form:form method='POST' modelAttribute='user'>
 					<form:input path='username' placeholder='your username' /><br><br>
 					<form:input path='email' placeholder='your email' /><br><br>
-					<input type='password' name='password' placeholder='your password' /><br><br>
-					<input type='password' name='confirm' placeholder='confirm password' /><br><br><br>
+					<input type='password' name='password' placeholder='your password' /><br>
+					<input type='password' name='confirm' placeholder='confirm password' /><br><br>
 					<input type='submit' value='Change details' />
 				</form:form>
 				<br>
-				<form action='${pageContext.servletContext.contextPath}'>
-					<input type='submit' value='Cancel'/>
-				</form>
 				<h1 align='center'>Your Twat list</h1>
 				<table>
 					<c:forEach items='${usersTwats}' var='twat'>

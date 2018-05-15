@@ -14,6 +14,12 @@
 	<br><br><br>
 	<h1 align='center'>Twat view</h1>
 	<div align='center'>
+	<form action='${pageContext.servletContext.contextPath}/twater'>
+		<input type='submit' value='Main Page'/>
+	</form>
+	</div>
+	<br><br>
+	<div align='center'>
 		<table>
 			<tr>
 				<td>${twat.created}</td>
