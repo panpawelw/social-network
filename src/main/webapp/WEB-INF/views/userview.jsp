@@ -21,8 +21,10 @@
 	</div>
 	<br>
 	<div align='center'>
-		<form method='POST' action='twat'>
-			<textarea name='message' cols='31' rows='4' placeholder='Enter message...'></textarea><br>
+		<form method='POST' action='sendmessage'>
+			<input type='hidden' name='sender' value='${loggedInUser.id}'/>
+			<textarea name='text' cols='31' rows='4' placeholder='Enter message...'></textarea><br>
+			<input type='hidden' name='receiver' value='${usersTwats[0].user.id}'/>
 			<input type='submit' value='Send message to ${usersTwats[0].user.username}'/>
 		</form>
 		<br>
