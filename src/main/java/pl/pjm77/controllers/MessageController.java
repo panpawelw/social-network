@@ -27,14 +27,17 @@ public class MessageController {
 			return "redirect:/";
 		}
 		System.out.println(sender + " " + text + " " + receiver);
-//		Message message = new Message();
-//		message.setCreated(created);
-//		message.setSender(userRepository.findById(sender));
-//		message.setText(text);
-		
+		Message message = new Message();
+		java.util.Date date = new java.util.Date();
+		java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
+		message.setCreated(created);
+		message.setSender(userRepository.findById(sender));
+		message.setText(text);
+		message.setReceiver(userRepository.findById(receiver));
+		messageRepository.saveAndFlush(message);
 		return "redirect:/user?id=" + receiver;
 	}
-	
+
 	@GetMapping("viewmessage")
 	public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser) {
 		if(loggedInUser.getUsername()==null) {

@@ -11,9 +11,9 @@ import pl.pjm77.entities.Twat;
 @Transactional
 public interface TwatRepository extends JpaRepository<Twat,Long>{
 
-	public List<Twat> findAllByOrderByCreatedDesc();
+	List<Twat> findAllByOrderByCreatedDesc();
 	
-	public List<Twat> findAllByUserIdOrderByCreatedDesc(long id);
+	List<Twat> findAllByUserIdOrderByCreatedDesc(long id);
 	
-	public Twat findById(long id);
+	Twat findById(long id);
 }

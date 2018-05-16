@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import pl.pjm77.entities.Message;
 import pl.pjm77.entities.Twat;
 import pl.pjm77.entities.User;
+import pl.pjm77.repositories.MessageRepository;
 import pl.pjm77.repositories.TwatRepository;
 import pl.pjm77.repositories.UserRepository;
 
@@ -23,7 +25,10 @@ public class UserController {
 	private TwatRepository twatRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+	
+	@Autowired
+	private MessageRepository messageRepository;
 
 	@GetMapping("user")
 	public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
@@ -34,6 +39,10 @@ public class UserController {
 		model.addAttribute("usersTwats", usersTwats);
 		if(loggedInUser.getId()==id){
 			model.addAttribute("user", loggedInUser);
+			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
+			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+			model.addAttribute("receivedMessages", receivedMessages);
+			model.addAttribute("sentMessages", sentMessages);
 			return "userownview";
 		}else {
 			return "userview";
