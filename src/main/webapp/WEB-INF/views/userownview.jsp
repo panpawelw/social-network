@@ -16,11 +16,17 @@
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
-    width: 33.33%;
-    padding: 10px;
+    width: 20%;
+    padding: 5px;
     border: 1px solid black;
 }
 
+.centralcolumn {
+    float: left;
+    width: 60%;
+    padding: 5px;
+    border: 1px solid black;
+}
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -41,12 +47,12 @@
 					<tr>
 						<td>${receivedMessage.created}</td>
 						<td>${receivedMessage.sender.username}</td>
-						<td>${fn:substring(message,0,30)}</td>
+						<td><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,30)}</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
-		<div class='column'>
+		<div class='centralcolumn'>
 			<div align='center'>
 				<h1 align='center'>Your account</h1>
 				<form action='${pageContext.servletContext.contextPath}/twater'>
@@ -81,7 +87,7 @@
 					<tr>
 						<td>${sentMessage.created}</td>
 						<td>${sentMessage.sender.username}</td>
-						<td>${fn:substring(message,0,30)}</td>
+						<td><a href='${pageContext.servletContext.contextPath}/message?id=${sentMessage.id}'>${fn:substring(message,0,30)}</a></td>
 					</tr>
 				</c:forEach>
 			</table>

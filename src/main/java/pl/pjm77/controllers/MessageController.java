@@ -2,6 +2,7 @@ package pl.pjm77.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,11 +39,12 @@ public class MessageController {
 		return "redirect:/user?id=" + receiver;
 	}
 
-	@GetMapping("viewmessage")
-	public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser) {
+	@GetMapping("message")
+	public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
-		return "redirect:/user?id=" + loggedInUser.getId();
+		model.addAttribute(messageRepository.findById(id));
+		return "messageview";
 	}
 }
