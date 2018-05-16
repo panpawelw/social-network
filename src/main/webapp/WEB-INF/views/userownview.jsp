@@ -41,7 +41,7 @@
 					<tr>
 						<td>${receivedMessage.created}</td>
 						<td>${receivedMessage.sender.username}</td>
-						<td>${fn:substring(message,0,30)...}</td>
+						<td>${fn:substring(message,0,30)}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -75,7 +75,16 @@
 		</div>
 		<div class='column'>
 			<h2 align='center'>Sent messages</h2>
-			<p>${sentMessages}
+			<table>
+				<c:forEach items='${sentMessages}' var='sentMessage'>
+				<c:set var='message' value='${sentMessage.text}'/>
+					<tr>
+						<td>${sentMessage.created}</td>
+						<td>${sentMessage.sender.username}</td>
+						<td>${fn:substring(message,0,30)}</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 	</div>
 </body>
