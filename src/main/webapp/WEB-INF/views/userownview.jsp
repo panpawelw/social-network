@@ -7,33 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources.style.css' rel='stylesheet' type='text/css'/>
 <title>Your account</title>
-<style>
-* {
-    box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 20%;
-    padding: 5px;
-    border: 1px solid black;
-}
-
-.centralcolumn {
-    float: left;
-    width: 60%;
-    padding: 5px;
-    border: 1px solid black;
-}
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
 </head>
 <body>
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
