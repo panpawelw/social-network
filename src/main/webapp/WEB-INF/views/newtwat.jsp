@@ -13,7 +13,7 @@
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
-	<h3 align='center'>Add new Twat</h3>
+	<h1 align='center'>Add new Twat</h1>
 	<br><br><br>
 	<div align='center'>
 		<form:form method='POST' modelAttribute='twat'>

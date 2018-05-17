@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>User view</title>
 </head>
 <body>
@@ -20,8 +21,6 @@
 		</form>
 	</div>
 	<br>
-	<h3 align='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
-	<br>
 	<div align='center'>
 		<form method='POST' action='sendmessage'>
 			<input type='hidden' name='sender' value='${loggedInUser.id}'/>
@@ -32,12 +31,19 @@
 		<br>
 	</div>
 	<div align='center'>
+		<h3 align='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
+		<br>
 		<table>
+			<tr>
+				<th>Created</th>
+				<th>Text</th>
+				<th>Comments</th>
+			</tr>
 			<c:forEach items='${usersTwats}' var='twat'>
 				<tr>
 					<td>${twat.created}</td>
 					<td><a href='${pageContext.servletContext.contextPath}/twat?id=${twat.id}'>${twat.text}</a></td>
-					<td>Comments: ${fn:length(twat.comments)}</td>
+					<td>${fn:length(twat.comments)}</td>
 				</tr>
 			</c:forEach>
 		</table>

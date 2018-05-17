@@ -1,26 +1,35 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
-    float: left;
-    width: 20%;
-    padding: 5px;
-    border: 1px solid black;
+	float: left;
+	width: 20%;
+	padding: 2px;
 }
 
 .centralcolumn {
-    float: left;
-    width: 60%;
-    padding: 5px;
-    border: 1px solid black;
+	float: left;
+	width: 60%;
+	padding: 2px;
 }
 /* Clear floats after the columns */
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
+
+.error {
+	color: red;	
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+	}

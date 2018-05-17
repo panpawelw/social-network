@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>Twat view</title>
 </head>
 <body>
@@ -24,6 +25,11 @@
 	<div align='center'>
 		<table>
 			<tr>
+				<th>Created</th>
+				<th>User</th>
+				<th>Text</th>
+			</tr>
+			<tr>
 				<td>${twat.created}</td>
 				<td><a href='${pageContext.servletContext.contextPath}/user?id=${twat.user.id}'>${twat.user.username}</a></td>
 				<td>${twat.text}</td>
@@ -33,6 +39,11 @@
 	<h3 align='center'>Comments: ${fn:length(allComments)}</h3>
 	<div align='center'>
 		<table>
+			<tr>
+				<th>Created</th>
+				<th>User</th>
+				<th>Text</th>
+			</tr>
 			<c:forEach items='${allComments}' var='comment'>
 				<tr>
 					<td>${comment.created}</td>

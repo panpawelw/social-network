@@ -5,12 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>Twater</title>
-<style>
-	table, th, td {
-    border: 1px solid black;
-	}
-</style>
 </head>
 <body>
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
@@ -27,6 +23,11 @@
 	<br>
 	<div align='center'>
 		<table>
+			<tr>
+				<th>Created</th>
+				<th>User</th>
+				<th>Text</th>
+			</tr>
 			<c:forEach items='${allTwats}' var='twat'>
 				<tr>
 					<td>${twat.created}</td>

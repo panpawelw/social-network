@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>Message view</title>
 </head>
 <body>
@@ -25,6 +26,11 @@
 	<br>
 	<div align='center'>
 		<table>
+			<tr>
+				<th>Created</th>
+				<th>User</th>
+				<th>Text</th>
+			</tr>
 			<tr>
 				<td>${message.created}</td>
 				<td>${message.sender.username}</td>

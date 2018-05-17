@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="style.css">
+<link href='resources/style.css' rel='stylesheet' type='text/css'/>
 <title>Sign In</title>
 </head>
 <body>

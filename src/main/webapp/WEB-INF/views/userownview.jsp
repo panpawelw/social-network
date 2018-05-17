@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href='resources.style.css' rel='stylesheet' type='text/css'/>
+<link href='resources/style.css' rel='stylesheet' type='text/css'/>
 <title>Your account</title>
 </head>
 <body>
@@ -17,6 +17,11 @@
 		<div class='column'>
 			<h2 align='center'>Received messages</h2>
 			<table>
+				<tr>
+					<th>Created</th>
+					<th>User</th>
+					<th>Text</th>
+				</tr>
 				<c:forEach items='${receivedMessages}' var='receivedMessage'>
 				<c:set var='message' value='${receivedMessage.text}'/>
 					<tr>
@@ -44,6 +49,11 @@
 				<br>
 				<h1 align='center'>Your Twat list</h1>
 				<table>
+				<tr>
+					<th>Created</th>
+					<th>Text</th>
+					<th>Comments</th>
+				</tr>
 					<c:forEach items='${usersTwats}' var='twat'>
 						<tr>
 							<td>${twat.created}</td>
@@ -57,6 +67,11 @@
 		<div class='column'>
 			<h2 align='center'>Sent messages</h2>
 			<table>
+				<tr>
+					<th>Created</th>
+					<th>User</th>
+					<th>Text</th>
+				</tr>
 				<c:forEach items='${sentMessages}' var='sentMessage'>
 				<c:set var='message' value='${sentMessage.text}'/>
 					<tr>
