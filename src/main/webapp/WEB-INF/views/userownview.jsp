@@ -55,9 +55,9 @@
 		<div class='centralcolumn'>
 			<div align='center'>
 				<h1 align='center'>Your account</h1>
-				<form action='${pageContext.servletContext.contextPath}/twater'>
-					<input type='submit' value='Main Page'/>
-				</form>
+					<form action='${pageContext.servletContext.contextPath}/twater'>
+						<input type='submit' value='Homepage'/>
+					</form>
 				<br>
 				<form:form method='POST' modelAttribute='user'>
 					<form:input path='username' placeholder='your username' /><br><br>

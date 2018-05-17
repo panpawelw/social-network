@@ -11,14 +11,16 @@
 <body>
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<br><br><br>
-	<h1 align='center'>Twat view</h1>
+	<h1 align='center'>Twater</h1>
+	<br>
 	<div align='center'>
-	<form action='${pageContext.servletContext.contextPath}/twater'>
-		<input type='submit' value='Main Page'/>
-	</form>
+		<form action='${pageContext.servletContext.contextPath}/twater'>
+			<input type='submit' value='Homepage'/>
+		</form>
 	</div>
-	<br><br>
+	<h3 align='center'>Twat view</h3>
+	<br>
+	<br>
 	<div align='center'>
 		<table>
 			<tr>

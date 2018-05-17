@@ -15,14 +15,16 @@
 <body>
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<br><br><br>
 	<h1 align='center'>Twater</h1>
+	<br><br>
+	<h3 align='center'>Twat list</h3>
+	<br>
 	<div align='center'>
 		<form action='newtwat' method='GET'>
 			<input type='submit' value='New twat'/>
 		</form>
 	</div>
-	<h3 align='center'>Twat list</h3>
+	<br>
 	<div align='center'>
 		<table>
 			<c:forEach items='${allTwats}' var='twat'>

@@ -11,9 +11,10 @@
 </head>
 <body>
 	<br>
-	<br>
-	<br>
+	<h1 align='center'>Twater</h1>
+	<br><br>
 	<h3 align='center'>Sign Up</h3>
+	<br>
 	<div align='center'>
 		<form:form method='POST' modelAttribute='user'>
 			<form:input path='username' placeholder='your username' /><br><br>

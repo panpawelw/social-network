@@ -9,9 +9,11 @@
 <title>Sign In</title>
 </head>
 <body>
+	<br>
 	<h1 align='center'>Twater</h1>
-	<br><br><br>
+	<br><br>
 	<h3 align='center'>Sign In</h3>
+	<br>
 	<div align='center'>
 		<form method='POST' action=''>
 			<input type='text' name='username' placeholder='username'/>

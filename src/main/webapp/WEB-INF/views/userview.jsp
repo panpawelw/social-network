@@ -12,13 +12,15 @@
 <body>
 	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<br><br><br>
-	<h1 align='center'>User ${usersTwats[0].user.username}'s Twat list</h1>
-		<div align='center'>
+	<h1 align='center'>Twater</h1>
+	<br>
+	<div align='center'>
 		<form action='${pageContext.servletContext.contextPath}/twater'>
-			<input type='submit' value='Main Page'/>
+			<input type='submit' value='Homepage'/>
 		</form>
 	</div>
+	<br>
+	<h3 align='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
 	<br>
 	<div align='center'>
 		<form method='POST' action='sendmessage'>
