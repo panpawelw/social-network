@@ -27,7 +27,8 @@
 					<tr>
 						<td>${receivedMessage.created}</td>
 						<td>${receivedMessage.sender.username}</td>
-						<td><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,30)}</a></td>
+						<td><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,26)}
+						<c:if test="${fn:length(message) > 30}">...</c:if></a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -77,7 +78,8 @@
 					<tr>
 						<td>${sentMessage.created}</td>
 						<td>${sentMessage.sender.username}</td>
-						<td><a href='${pageContext.servletContext.contextPath}/message?id=${sentMessage.id}'>${fn:substring(message,0,30)}</a></td>
+						<td><a href='${pageContext.servletContext.contextPath}/message?id=${sentMessage.id}'>${fn:substring(message,0,26)}
+						<c:if test="${fn:length(message) > 30}">...</c:if></a></td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -29,6 +29,11 @@
 	color: red;	
 }
 
+.center{
+	width: 90%;
+	vertical-align: middle;
+}
+
 table, th, td {
     border: 1px solid black;
     text-align: center;
