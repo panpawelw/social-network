@@ -44,7 +44,10 @@ public class MessageController {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
-		model.addAttribute("message", messageRepository.findById(id));
+		Message message = messageRepository.findById(id);
+		message.setUnread(false);
+		messageRepository.saveAndFlush(message);
+		model.addAttribute("message", message);
 		return "messageview";
 	}
 }

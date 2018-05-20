@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 * {
 	box-sizing: border-box;
 }
@@ -9,14 +7,14 @@
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
-	width: 20%;
-	padding: 2px;
+	width: 22.5%;
+	padding: 1px;
 }
 
 .centralcolumn {
 	float: left;
-	width: 60%;
-	padding: 2px;
+	width: 55%;
+	padding: 1px;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -27,11 +25,6 @@
 
 .error {
 	color: red;	
-}
-
-.center{
-	width: 90%;
-	vertical-align: middle;
 }
 
 table, th, td {

@@ -24,10 +24,11 @@
 				</tr>
 				<c:forEach items='${receivedMessages}' var='receivedMessage'>
 				<c:set var='message' value='${receivedMessage.text}'/>
+				<c:set var='unread' value='${receivedMessage.unread}'/>
 					<tr>
-						<td>${receivedMessage.created}</td>
-						<td>${receivedMessage.sender.username}</td>
-						<td><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,26)}
+						<td style="font-weight: ${unread ? 'bold' : 'normal' }">${receivedMessage.created}</td>
+						<td style="font-weight: ${unread ? 'bold' : 'normal' }">${receivedMessage.sender.username}</td>
+						<td style="font-weight: ${unread ? 'bold' : 'normal' }"><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,26)}
 						<c:if test="${fn:length(message) > 30}">...</c:if></a></td>
 					</tr>
 				</c:forEach>
@@ -67,7 +68,7 @@
 		</div>
 		<div class='column'>
 			<h2 align='center'>Sent messages</h2>
-			<table>
+			<table align='center'>
 				<tr>
 					<th>Created</th>
 					<th>User</th>
