@@ -54,13 +54,13 @@
 				<tr>
 					<th>Created</th>
 					<th>Text</th>
-					<th>Comments</th>
+					<th>&copy;</th>
 				</tr>
 					<c:forEach items='${usersTwats}' var='twat'>
 						<tr>
 							<td>${twat.created}</td>
 							<td><a href='${pageContext.servletContext.contextPath}/twat?id=${twat.id}'>${twat.text}</a></td>
-							<td>Comments: ${fn:length(twat.comments)}</td>
+							<td>${fn:length(twat.comments)}</td>
 						</tr>
 					</c:forEach>
 				</table>

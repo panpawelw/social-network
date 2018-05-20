@@ -7,13 +7,13 @@
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
-	width: 22.5%;
+	width: 22%;
 	padding: 1px;
 }
 
 .centralcolumn {
 	float: left;
-	width: 55%;
+	width: 56%;
 	padding: 1px;
 }
 /* Clear floats after the columns */

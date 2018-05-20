@@ -28,12 +28,14 @@
 		<table>
 			<tr>
 				<th>Created</th>
-				<th>User</th>
+				<th>Sender</th>
+				<th>Receiver</th>
 				<th>Text</th>
 			</tr>
 			<tr>
 				<td>${message.created}</td>
 				<td>${message.sender.username}</td>
+				<td>${message.receiver.username}</td>
 				<td>${message.text}</td>
 			</tr>
 		</table>

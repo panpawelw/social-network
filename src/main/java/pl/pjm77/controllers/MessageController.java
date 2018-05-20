@@ -45,8 +45,10 @@ public class MessageController {
 			return "redirect:/";
 		}
 		Message message = messageRepository.findById(id);
-		message.setUnread(false);
-		messageRepository.saveAndFlush(message);
+		if(loggedInUser.getId()==message.getReceiver().getId()) {
+			message.setUnread(false);
+			messageRepository.saveAndFlush(message);
+		}
 		model.addAttribute("message", message);
 		return "messageview";
 	}
