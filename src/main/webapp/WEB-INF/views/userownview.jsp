@@ -44,8 +44,11 @@
 				<form:form method='POST' modelAttribute='user'>
 					<form:input path='username' placeholder='your username' /><br><br>
 					<form:input path='email' placeholder='your email' /><br><br>
-					<input type='password' name='password' placeholder='your password' /><br>
+					<form:input path='password' type='password' placeholder='your password' /><br>
 					<input type='password' name='confirm' placeholder='confirm password' /><br><br>
+					<form:errors path='*' cssClass='error'/>
+					<p class='error'>${passwordsDontMatch}</p>
+					<br>
 					<input type='submit' value='Change details' />
 				</form:form>
 				<br>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.pjm77.entities.User;
 import pl.pjm77.repositories.UserRepository;
@@ -33,9 +32,9 @@ public class SignUpController {
 	}
 	
 	@PostMapping("/signup")
-	public String signUpAction(@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, RedirectAttributes redirectAttributes, Model model) {
+	public String signUpAction(@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model) {
 		if(!confirm.equals(user.getPassword())){
-			model.addAttribute("passwordsDontMatch", "Hasła nie pasują!");
+			model.addAttribute("passwordsDontMatch", "Passwords don't match!");
 		}
 		if(!result.hasErrors() && confirm.equals(user.getPassword())) {
 			user.hashPassword(user.getPassword());

@@ -26,19 +26,19 @@ public class User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank(message = "Podaj poprawną nazwę użytkownika!")
-	@NotNull(message = "Podaj poprawną nazwę użytkownika!")
+	@NotBlank(message = "Enter username!")
+	@NotNull(message = "Username can't be empty!")
 	@Column(nullable = false, unique = true)
 	private String username;
 
-	@NotBlank(message = "Podaj poprawne hasło!")
-	@NotNull(message = "Podaj poprawne hasło!")
+	@NotBlank(message = "Enter password!")
+	@NotNull(message = "Password can't be empty!")
 	@Column(nullable = false)
 	private String password;
 
-	@NotBlank(message = "Podaj poprawny adres e-mail!")
-	@NotNull(message = "Podaj poprawny adres e-mail!")
-	@Email(message = "Podaj poprawny adres e-mail!")
+	@NotBlank(message = "Enter email!")
+	@NotNull(message = "Email can't be empty!")
+	@Email(message = "Enter valid email!")
 	@Column(nullable = false, unique = true)
 	private String email;
 

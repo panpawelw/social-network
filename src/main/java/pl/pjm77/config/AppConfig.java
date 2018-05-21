@@ -47,7 +47,6 @@ public class AppConfig implements WebMvcConfigurer {
 		return tm;
 	}
 	
-
 	@Bean
 	public Validator validator() {
 		return new LocalValidatorFactoryBean();
@@ -56,4 +55,11 @@ public class AppConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+	
+//	@Bean(name="localeResolver")
+//	public LocaleContextResolver getLocaleContextResolver() {
+//	SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+//	localeResolver.setDefaultLocale(new Locale("pl","PL"));
+//	return localeResolver;
+//	}
 }

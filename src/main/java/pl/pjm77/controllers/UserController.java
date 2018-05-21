@@ -2,9 +2,12 @@ package pl.pjm77.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +41,9 @@ public class UserController {
 		List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(id); 
 		model.addAttribute("usersTwats", usersTwats);
 		if(loggedInUser.getId()==id){
-			model.addAttribute("user", loggedInUser);
+			User user = userRepository.findById(loggedInUser.getId());
+			user.setPassword(null);
+			model.addAttribute("user", user);
 			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
 			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
 			model.addAttribute("receivedMessages", receivedMessages);
@@ -51,16 +56,28 @@ public class UserController {
 	
 	@PostMapping("user")
 	public String changeUserDetails(@SessionAttribute ("loggedInUser") User loggedInUser, 
-			@ModelAttribute User user, @RequestParam String password, @RequestParam String confirm){
+			@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model){
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
-		if(password.equals(confirm)) {
+		if(!confirm.equals(user.getPassword())){
+			model.addAttribute("outcomeMessage", "Passwords don't match!");
+		}
+		if(!result.hasErrors() && confirm.equals(user.getPassword())) {
 			loggedInUser.setUsername(user.getUsername());
-			loggedInUser.setPassword(password);
+			loggedInUser.hashPassword(user.getPassword());
 			loggedInUser.setEmail(user.getEmail());
 			userRepository.saveAndFlush(loggedInUser);
+			model.addAttribute("passwordsDontMatch", "Your details have been changed!");
+			return "redirect:/user?id=" + loggedInUser.getId();
+		}else {
+			List<Twat> usersTwats = twatRepository.findAllByUserIdOrderByCreatedDesc(loggedInUser.getId()); 
+			model.addAttribute("usersTwats", usersTwats);
+			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
+			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+			model.addAttribute("receivedMessages", receivedMessages);
+			model.addAttribute("sentMessages", sentMessages);
+		    return "userownview";
 		}
-		return "redirect:/user?id=" + loggedInUser.getId();
 	}
 }
