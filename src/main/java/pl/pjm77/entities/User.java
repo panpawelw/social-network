@@ -26,20 +26,20 @@ public class User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
-	@NotNull
+	@NotBlank(message = "Podaj poprawną nazwę użytkownika!")
+	@NotNull(message = "Podaj poprawną nazwę użytkownika!")
 	@Column(nullable = false, unique = true)
 	private String username;
 
-	@NotBlank
-	@NotNull
+	@NotBlank(message = "Podaj poprawne hasło!")
+	@NotNull(message = "Podaj poprawne hasło!")
 	@Column(nullable = false)
 	private String password;
 
-	@NotBlank
-	@NotNull
+	@NotBlank(message = "Podaj poprawny adres e-mail!")
+	@NotNull(message = "Podaj poprawny adres e-mail!")
+	@Email(message = "Podaj poprawny adres e-mail!")
 	@Column(nullable = false, unique = true)
-	@Email
 	private String email;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
@@ -54,19 +54,6 @@ public class User{
 	@OneToMany(mappedBy = "receiver")
 	private List<Message> receivedMessages = new ArrayList<>();
 	
-//	public User() {}
-//	
-//	public User(User another) {
-//		this.id = another.id;
-//		this.username = another.username;
-//		this.password = another.password;
-//		this.email = another.email;
-//		this.twats = another.twats;
-//		this.comments = another.comments;
-//		this.sentMessages = another.sentMessages;
-//		this.receivedMessages = another.receivedMessages;
-//	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -80,6 +67,10 @@ public class User{
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void hashPassword(String password) {
 		this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 	}
 

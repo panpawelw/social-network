@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>Sign Up</title>
 </head>
 <body>
@@ -20,7 +21,10 @@
 			<form:input path='username' placeholder='your username' /><br><br>
 			<form:input path='email' placeholder='your email' /><br><br>
 			<form:input type='password' path='password' placeholder='your password' /><br><br>
-			<input type='password' name='confirm' placeholder='confirm password' /><br><br><br>
+			<input type='password' name='confirm' placeholder='confirm password' /><br><br>
+			<form:errors path='*' cssClass='error'/><br>
+			<p class='error'>${passwordsDontMatch}</p>
+			<br>
 			<input type='submit' value='Sign Up' />
 		</form:form>
 		<br>

@@ -1,6 +1,7 @@
 package pl.pjm77.config;
 
 import javax.persistence.EntityManagerFactory;
+import javax.validation.Validator;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -43,6 +45,12 @@ public class AppConfig implements WebMvcConfigurer {
 	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
 		JpaTransactionManager tm = new JpaTransactionManager(emf);
 		return tm;
+	}
+	
+
+	@Bean
+	public Validator validator() {
+		return new LocalValidatorFactoryBean();
 	}
 	
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
