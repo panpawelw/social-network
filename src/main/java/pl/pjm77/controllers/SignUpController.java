@@ -41,7 +41,7 @@ public class SignUpController {
 			userRepository.save(user);
 			return "redirect:/";
 		}else {
-		    return "/signup";
+		    return "signup";
 		}
 	}
 }
