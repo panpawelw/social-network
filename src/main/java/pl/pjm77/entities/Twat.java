@@ -28,8 +28,8 @@ public class Twat {
 	private long id;
 
 	@Column
-	@NotBlank
-	@NotNull
+	@NotBlank(message="Can''t post an empty Twat!")
+	@NotNull(message="Can''t post an empty Twat!")
 	@Size(max = 140)
 	private String text;
 

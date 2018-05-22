@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pl.pjm77.entities.User;
@@ -36,7 +35,6 @@ public class SignInController {
 	
 	@PostMapping("/")
 	public String signInAction(@ModelAttribute @Valid User user, BindingResult result, Model model) {
-		System.out.println(user);
 		if(!result.hasErrors()) {
 			User loggedInUser = userRepository.findByUsername(user.getUsername());
 			if(loggedInUser==null){
@@ -48,27 +46,11 @@ public class SignInController {
 				return "signin";
 			}
 			model.addAttribute("loggedInUser", loggedInUser);
-			System.out.println(loggedInUser);
 			return "redirect:/twater";
 		}else {
 		    return "signin";
 		}
 	}
-//	@PostMapping("/")
-//	public String signInAction(Model model, @RequestParam String username, String password) {
-//		User user = userRepository.findByUsername(username);
-//		if(user==null) {
-//			model.addAttribute("usernameError", "This username does not exist!");
-//			return "signin";
-//		}
-//		if(BCrypt.checkpw(password, user.getPassword())) {
-//			model.addAttribute("loggedInUser", user);
-//			return "redirect:/twater";
-//		}else {
-//			model.addAttribute("passwordError", "Incorrect password!");
-//			return "signin";
-//		}
-//	}
 	
 	@GetMapping("/signout")
 	public String signOut(Model model) {

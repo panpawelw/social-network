@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href='resources/style.css' rel='stylesheet' type='text/css'>
 <title>Add new Twat</title>
 </head>
 <body>
@@ -18,10 +19,11 @@
 	<div align='center'>
 		<form:form method='POST' modelAttribute='twat'>
 			<form:textarea path='text' cols='71' rows='2' maxlength='140' placeholder='Enter maximum of 140 characters...'/><br><br>
+			<form:errors path='*' cssClass='error'/><br><br>
 			<input type='submit' value='Add twat'/>
 		</form:form>
 		<br>
-		<form action='javascript:history.go(-1)'>
+		<form action='twater'>
 			<input type='submit' value='Cancel'/>
 		</form>
 	</div>
