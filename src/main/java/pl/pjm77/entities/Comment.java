@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,6 +25,8 @@ public class Comment {
 	@Column(nullable = false)
 	private Timestamp created;
 	
+	@NotBlank
+	@NotNull
 	@Column(nullable = false)
 	@Size(max = 60)
 	private String text;

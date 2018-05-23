@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,12 +54,13 @@
 			</c:forEach>
 		</table>
 		<br>
-		<form method='POST' action='addcomment'>
-			<textarea name='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></textarea><br>
-			<input type='hidden' name='userId' value='${loggedInUser.id}'/>
-			<input type='hidden' name='twatId' value='${twat.id}'/>
+		<form:form method='POST' modelAttribute='comment'>
+			<form:textarea path='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></form:textarea><br>
+			<form:input type='hidden' path='user' value='${loggedInUser.id}'/>
+			<form:input type='hidden' path='twat' value='${twat.id}'/><br>
+			<form:errors path='*' cssClass='error'/><br>
 			<input type='submit' value='Post comment'/>
-		</form>
+		</form:form>
 		<br>
 	</div>
 </body>
