@@ -54,11 +54,10 @@
 			</c:forEach>
 		</table>
 		<br>
-		<form:form method='POST' modelAttribute='comment'>
+		<form:form method='POST' modelAttribute='comment' action='addcomment'>
 			<form:textarea path='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></form:textarea><br>
-			<form:input type='hidden' path='user' value='${loggedInUser.id}'/>
-			<form:input type='hidden' path='twat' value='${twat.id}'/><br>
-			<form:errors path='*' cssClass='error'/><br>
+			<input type='hidden' name='twatId' value='${twat.id}'/><br>
+			<form:errors path='*' cssClass='error'/><br><br>
 			<input type='submit' value='Post comment'/>
 		</form:form>
 		<br>
