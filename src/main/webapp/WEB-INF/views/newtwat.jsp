@@ -11,12 +11,12 @@
 <title>Add new Twat</title>
 </head>
 <body>
-	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<br><br><br>
-	<h1 align='center'>Add new Twat</h1>
+	<h1 class='center'>Add new Twat</h1>
 	<br><br><br>
-	<div align='center'>
+	<div class='center'>
 		<form:form method='POST' modelAttribute='twat'>
 			<form:textarea path='text' cols='71' rows='2' maxlength='140' placeholder='Enter maximum of 140 characters...'/><br><br>
 			<form:errors path='*' cssClass='error'/><br><br>

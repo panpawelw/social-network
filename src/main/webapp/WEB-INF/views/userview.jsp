@@ -12,17 +12,17 @@
 <title>User view</title>
 </head>
 <body>
-	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<h1 align='center'>Twater</h1>
+	<h1 class='center'>Twater</h1>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form action='${pageContext.servletContext.contextPath}/twater'>
 			<input type='submit' value='Homepage'/>
 		</form>
 	</div>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form:form method='POST' modelAttribute='message' action='sendmessage'>
 			<input type='hidden' name='senderId' value='${loggedInUser.id}'/>
 			<form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'></form:textarea><br>
@@ -32,10 +32,10 @@
 		</form:form>
 		<br>
 	</div>
-	<div align='center'>
-		<h3 align='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
+	<div class='center'>
+		<h3 class='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
 		<br>
-		<table>
+		<table class='center'>
 			<tr>
 				<th>Created</th>
 				<th>Text</th>

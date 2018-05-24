@@ -11,20 +11,20 @@
 <title>Twat view</title>
 </head>
 <body>
-	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<h1 align='center'>Twater</h1>
+	<h1 class='center'>Twater</h1>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form action='${pageContext.servletContext.contextPath}/twater'>
 			<input type='submit' value='Homepage'/>
 		</form>
 	</div>
-	<h3 align='center'>Twat view</h3>
+	<h3 class='center'>Twat view</h3>
 	<br>
 	<br>
-	<div align='center'>
-		<table>
+	<div class='center'>
+		<table class='center'>
 			<tr>
 				<th>Created</th>
 				<th>User</th>
@@ -37,9 +37,9 @@
 			</tr>
 		</table>
 	</div>
-	<h3 align='center'>Comments: ${fn:length(allComments)}</h3>
-	<div align='center'>
-		<table>
+	<h3 class='center'>Comments: ${fn:length(allComments)}</h3>
+	<div class='center'>
+		<table class='center'>
 			<tr>
 				<th>Created</th>
 				<th>User</th>

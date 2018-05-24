@@ -9,23 +9,23 @@
 <title>Message view</title>
 </head>
 <body>
-	<p align='right'>
+	<p class='right'>
 		User:<a
 			href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 		<a href='${pageContext.servletContext.contextPath}/signout'>Sign
 			out</a>
-	<h1 align='center'>Twater</h1>
+	<h1 class='center'>Twater</h1>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form action='${pageContext.servletContext.contextPath}/twater'>
 			<input type='submit' value='Homepage' />
 		</form>
 	</div>
-	<h3 align='center'>Message view</h3>
+	<h3 class='center'>Message view</h3>
 	<br>
 	<br>
-	<div align='center'>
-		<table>
+	<div class='center'>
+		<table class='center'>
 			<tr>
 				<th>Created</th>
 				<th>Sender</th>

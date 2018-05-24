@@ -11,12 +11,12 @@
 <title>Your account</title>
 </head>
 <body>
-	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
 	<div class='row'>
 		<div class='column'>
-			<h2 align='center'>Received messages</h2>
-			<table>
+			<h2 class='center'>Received messages</h2>
+			<table class='center'>
 				<tr>
 					<th>Created</th>
 					<th>User</th>
@@ -35,8 +35,8 @@
 			</table>
 		</div>
 		<div class='centralcolumn'>
-			<div align='center'>
-				<h1 align='center'>Your account</h1>
+			<div class='center'>
+				<h1 class='center'>Your account</h1>
 					<form action='${pageContext.servletContext.contextPath}/twater'>
 						<input type='submit' value='Homepage'/>
 					</form>
@@ -52,8 +52,8 @@
 					<input type='submit' value='Change details' />
 				</form:form>
 				<br>
-				<h1 align='center'>Your Twat list</h1>
-				<table>
+				<h1 class='center'>Your Twat list</h1>
+				<table class='center'>
 				<tr>
 					<th>Created</th>
 					<th>Text</th>
@@ -70,8 +70,8 @@
 			</div>
 		</div>
 		<div class='column'>
-			<h2 align='center'>Sent messages</h2>
-			<table align='center'>
+			<h2 class='center'>Sent messages</h2>
+			<table class='center'>
 				<tr>
 					<th>Created</th>
 					<th>User</th>
@@ -83,7 +83,7 @@
 						<td>${sentMessage.created}</td>
 						<td>${sentMessage.sender.username}</td>
 						<td><a href='${pageContext.servletContext.contextPath}/message?id=${sentMessage.id}'>${fn:substring(message,0,26)}
-						<c:if test="${fn:length(message) > 30}">...</c:if></a></td>
+						<c:if test='${fn:length(message) > 30}'>...</c:if></a></td>
 					</tr>
 				</c:forEach>
 			</table>

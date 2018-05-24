@@ -9,20 +9,20 @@
 <title>Twater</title>
 </head>
 <body>
-	<p align='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+	<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
 	<a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-	<h1 align='center'>Twater</h1>
+	<h1 class='center'>Twater</h1>
 	<br><br>
-	<h3 align='center'>Twat list</h3>
+	<h3 class='center'>Twat list</h3>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form action='newtwat' method='GET'>
 			<input type='submit' value='New twat'/>
 		</form>
 	</div>
 	<br>
-	<div align='center'>
-		<table>
+	<div class='center'>
+		<table class='center'>
 			<tr>
 				<th>Created</th>
 				<th>User</th>
