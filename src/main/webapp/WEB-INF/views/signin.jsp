@@ -11,11 +11,11 @@
 </head>
 <body>
 	<br>
-	<h1 align='center'>Twater</h1>
+	<h1 class='center'>Twater</h1>
 	<br><br>
-	<h3 align='center'>Sign In</h3>
+	<h3 class='center'>Sign In</h3>
 	<br>
-	<div align='center'>
+	<div class='center'>
 		<form:form method='POST' modelAttribute='user'>
 			<form:input path='username' placeholder='username'/><br>
 			<form:errors path='username' cssClass='error'/>

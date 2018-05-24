@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -22,12 +23,13 @@
 	</div>
 	<br>
 	<div align='center'>
-		<form method='POST' action='sendmessage'>
-			<input type='hidden' name='sender' value='${loggedInUser.id}'/>
-			<textarea name='text' cols='31' rows='4' placeholder='Enter message...'></textarea><br>
-			<input type='hidden' name='receiver' value='${usersTwats[0].user.id}'/>
+		<form:form method='POST' modelAttribute='message' action='sendmessage'>
+			<input type='hidden' name='senderId' value='${loggedInUser.id}'/>
+			<form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'></form:textarea><br>
+			<input type='hidden' name='receiverId' value='${usersTwats[0].user.id}'/><br>
+			<form:errors path='*' cssClass='error'/><br><br>
 			<input type='submit' value='Send message to ${usersTwats[0].user.username}'/>
-		</form>
+		</form:form>
 		<br>
 	</div>
 	<div align='center'>

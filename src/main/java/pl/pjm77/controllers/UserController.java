@@ -50,6 +50,7 @@ public class UserController {
 			model.addAttribute("sentMessages", sentMessages);
 			return "userownview";
 		}else {
+			model.addAttribute("message", new Message());
 			return "userview";
 		}
 	}

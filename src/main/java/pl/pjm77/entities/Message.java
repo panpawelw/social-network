@@ -29,8 +29,8 @@ public class Message {
 	private boolean unread = true;
 	
 	@Column(nullable = false, columnDefinition = "TEXT")
-	@NotBlank
-	@NotNull
+	@NotBlank(message="Can''t post an empty message!")
+	@NotNull(message="Can''t post an empty message!")
 	@Size(max=21845)
 	private String text;
 	

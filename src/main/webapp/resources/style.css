@@ -27,7 +27,15 @@
 	color: red;	
 }
 
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
 table, th, td {
     border: 1px solid black;
     text-align: center;
-	}
+}

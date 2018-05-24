@@ -25,8 +25,8 @@ public class Comment {
 	@Column(nullable = false)
 	private Timestamp created;
 	
-	@NotBlank
-	@NotNull
+	@NotBlank(message="Can''t post an empty comment!")
+	@NotNull(message="Can''t post an empty comment!")
 	@Column(nullable = false)
 	@Size(max = 60)
 	private String text;
