@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
-<!DOCTYPE html">
+<!DOCTYPE "html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<br>
-	<h1 class='center'>Twater</h1>
+	<h1 class='center'>Social Network</h1>
 	<br><br>
 	<h3 class='center'>Sign Up</h3>
 	<br>

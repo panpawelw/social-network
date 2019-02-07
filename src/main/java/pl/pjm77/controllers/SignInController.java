@@ -46,7 +46,7 @@ public class SignInController {
 				return "signin";
 			}
 			model.addAttribute("loggedInUser", loggedInUser);
-			return "redirect:/twater";
+			return "redirect:/social_network";
 		}else {
 		    return "signin";
 		}

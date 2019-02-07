@@ -37,7 +37,7 @@ public class AppConfig implements WebMvcConfigurer {
 	@Bean
 	public LocalEntityManagerFactoryBean entityManagerFactory() {
 		LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
-		emfb.setPersistenceUnitName("twaterPersistenceUnit");
+		emfb.setPersistenceUnitName("socialNetworkPersistenceUnit");
 		return emfb;
 	}
 

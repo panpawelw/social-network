@@ -15,74 +15,74 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="messages")
+@Table
 public class Message {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 
-	@Column(nullable = false)
-	private Timestamp created;
-	
-	@Column(nullable = false, columnDefinition = "boolean default true")
-	private boolean unread = true;
-	
-	@Column(nullable = false, columnDefinition = "TEXT")
-	@NotBlank(message="Can''t post an empty message!")
-	@NotNull(message="Can''t post an empty message!")
-	@Size(max=21845)
-	private String text;
-	
-	@ManyToOne
-	@JoinColumn
-	private User sender;
-	
-	@ManyToOne
-	@JoinColumn
-	private User receiver;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public Timestamp getCreated() {
-		return created;
-	}
+    @Column(nullable = false)
+    private Timestamp created;
 
-	public void setCreated(Timestamp created) {
-		this.created = created;
-	}
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean unread = true;
 
-	public boolean isUnread() {
-		return unread;
-	}
+    @Column(nullable = false, columnDefinition = "TEXT")
+    @NotBlank(message="Can''t post an empty message!")
+    @NotNull(message="Can''t post an empty message!")
+    @Size(max=21845)
+    private String text;
 
-	public void setUnread(boolean unread) {
-		this.unread = unread;
-	}
+    @ManyToOne
+    @JoinColumn
+    private User sender;
 
-	public String getText() {
-		return text;
-	}
+    @ManyToOne
+    @JoinColumn
+    private User receiver;
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public Timestamp getCreated() {
+        return created;
+    }
 
-	public User getSender() {
-		return sender;
-	}
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
 
-	public void setSender(User sender) {
-		this.sender = sender;
-	}
+    public boolean isUnread() {
+        return unread;
+    }
 
-	public User getReceiver() {
-		return receiver;
-	}
+    public void setUnread(boolean unread) {
+        this.unread = unread;
+    }
 
-	public void setReceiver(User receiver) {
-		this.receiver = receiver;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
+    }
+
+    public long getId() {
+        return id;
+    }
 }
