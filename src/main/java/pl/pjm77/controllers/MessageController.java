@@ -24,52 +24,52 @@ import pl.pjm77.repositories.UserRepository;
 @Controller
 public class MessageController {
 
-    @Autowired
-    MessageRepository messageRepository;
+	@Autowired
+	MessageRepository messageRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	PostRepository postRepository;
 
-    @Autowired
-    UserRepository userRepository;
+	@PostMapping("sendmessage")
+	public String sendMessage(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Message message, BindingResult result, 
+			@RequestParam long senderId, String text, long receiverId, Model model) {
+		if(loggedInUser.getUsername()==null) {
+			return "redirect:/";
+		}
+		System.out.println(message);
+		if(!result.hasErrors()) {
+			java.util.Date date = new java.util.Date();
+			java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
+			message.setCreated(created);
+			message.setSender(userRepository.findById(senderId));
+			message.setText(text);
+			message.setReceiver(userRepository.findById(receiverId));
+			messageRepository.saveAndFlush(message);
+			System.out.println("Success!");
+			return "redirect:/user?id=" + receiverId;
+		}else {
+			List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(receiverId);
+			model.addAttribute("usersTwats", usersPosts);
+			System.out.println("Failure!");
+			return "userview";
+		}
+		
+	}
 
-    @Autowired
-    PostRepository postRepository;
-
-    @PostMapping("sendmessage")
-    public String sendMessage(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Message message, BindingResult result,
-                              @RequestParam long senderId, String text, long receiverId, Model model) {
-        if(loggedInUser.getUsername()==null) {
-            return "redirect:/";
-        }
-        System.out.println(message);
-        if(!result.hasErrors()) {
-            java.util.Date date = new java.util.Date();
-            java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
-            message.setCreated(created);
-            message.setSender(userRepository.findById(senderId));
-            message.setText(text);
-            message.setReceiver(userRepository.findById(receiverId));
-            messageRepository.saveAndFlush(message);
-            System.out.println("Success!");
-            return "redirect:/user?id=" + receiverId;
-        }else {
-            List<Post> usersTwats = postRepository.findAllByUserIdOrderByCreatedDesc(receiverId);
-            model.addAttribute("usersPosts", usersTwats);
-            System.out.println("Failure!");
-            return "userview";
-        }
-
-    }
-
-    @GetMapping("message")
-    public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
-        if(loggedInUser.getUsername()==null) {
-            return "redirect:/";
-        }
-        Message message = messageRepository.findById(id);
-        if(loggedInUser.getId()==message.getReceiver().getId()) {
-            message.setUnread(false);
-            messageRepository.saveAndFlush(message);
-        }
-        model.addAttribute("message", message);
-        return "messageview";
-    }
+	@GetMapping("message")
+	public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+		if(loggedInUser.getUsername()==null) {
+			return "redirect:/";
+		}
+		Message message = messageRepository.findById(id);
+		if(loggedInUser.getId()==message.getReceiver().getId()) {
+			message.setUnread(false);
+			messageRepository.saveAndFlush(message);
+		}
+		model.addAttribute("message", message);
+		return "messageview";
+	}
 }

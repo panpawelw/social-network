@@ -8,22 +8,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href='resources/style.css' rel='stylesheet' type='text/css'>
-    <title>Add new Post</title>
+    <title>Add new post</title>
 </head>
 <body>
 <p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
     <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
     <br><br><br>
-<h1 class='center'>Add new Post</h1>
+<h1 class='center'>Add new post</h1>
 <br><br><br>
 <div class='center'>
     <form:form method='POST' modelAttribute='post'>
         <form:textarea path='text' cols='71' rows='2' maxlength='140' placeholder='Enter maximum of 140 characters...'/><br><br>
-        <form:errors path='*' cssClass='error'/><br><br>
+        <form:errors path='text' cssClass='error'/><br><br>
         <input type='submit' value='Add post'/>
     </form:form>
     <br>
-    <form action='social_network'>
+    <form action='home'>
         <input type='submit' value='Cancel'/>
     </form>
 </div>

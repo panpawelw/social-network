@@ -24,38 +24,38 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages="pl.pjm77.repositories")
 public class AppConfig implements WebMvcConfigurer {
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views/");
-		viewResolver.setSuffix(".jsp");
-		return viewResolver;
-	}
-	
-	@Bean
-	public LocalEntityManagerFactoryBean entityManagerFactory() {
-		LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
-		emfb.setPersistenceUnitName("socialNetworkPersistenceUnit");
-		return emfb;
-	}
 
-	@Bean
-	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-		JpaTransactionManager tm = new JpaTransactionManager(emf);
-		return tm;
-	}
-	
-	@Bean
-	public Validator validator() {
-		return new LocalValidatorFactoryBean();
-	}
-	
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	}
-	
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setViewClass(JstlView.class);
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+    @Bean
+    public LocalEntityManagerFactoryBean entityManagerFactory() {
+        LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
+        emfb.setPersistenceUnitName("social_networkPersistenceUnit");
+        return emfb;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager tm = new JpaTransactionManager(emf);
+        return tm;
+    }
+
+    @Bean
+    public Validator validator() {
+        return new LocalValidatorFactoryBean();
+    }
+
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
 //	@Bean(name="localeResolver")
 //	public LocaleContextResolver getLocaleContextResolver() {
 //	SessionLocaleResolver localeResolver = new SessionLocaleResolver();

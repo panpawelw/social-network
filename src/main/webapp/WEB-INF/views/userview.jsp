@@ -14,10 +14,10 @@
 <body>
 <p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
     <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
-<h1 class='center'>Twater</h1>
+<h1 class='center'>Social Network</h1>
 <br>
 <div class='center'>
-    <form action='${pageContext.servletContext.contextPath}/twater'>
+    <form action='${pageContext.servletContext.contextPath}/home'>
         <input type='submit' value='Homepage'/>
     </form>
 </div>
@@ -33,7 +33,7 @@
     <br>
 </div>
 <div class='center'>
-    <h3 class='center'>User ${usersTwats[0].user.username}'s Twat list</h3>
+    <h3 class='center'>User ${usersTwats[0].user.username}'s posts</h3>
     <br>
     <table class='center'>
         <tr>

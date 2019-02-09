@@ -11,6 +11,6 @@ import pl.pjm77.entities.Comment;
 @Transactional
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    public List<Comment> findAllByPostIdOrderByCreatedDesc(long id);
-
+	public List<Comment> findAllByPostIdOrderByCreatedDesc(long id);
+	
 }
