@@ -33,7 +33,7 @@ public class CommentController {
 	UserRepository userRepository;
 	
 	@PostMapping("addcomment")
-	public String addComment(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Comment comment, BindingResult result, @RequestParam long twatId, Model model) {
+	public String addComment(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Comment comment, BindingResult result, @RequestParam long postId, Model model) {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
@@ -42,15 +42,15 @@ public class CommentController {
 			java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
 			comment.setCreated(created);
 			comment.setUser(loggedInUser);
-			comment.setPost(postRepository.findById(twatId));
+			comment.setPost(postRepository.findById(postId));
 			commentRepository.save(comment);
 			return "redirect:/twat?id=" + comment.getPost().getId();
 		}else {
-			Post post = postRepository.findById(twatId);
-			List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(twatId);
+			Post post = postRepository.findById(postId);
+			List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(postId);
 			model.addAttribute("allComments", allComments);
 			model.addAttribute("twat", post);
-			return "twatview";
+			return "postview";
 		}
 	}
 }

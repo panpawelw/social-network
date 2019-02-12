@@ -25,7 +25,7 @@
 <div class='center'>
     <form:form method='POST' modelAttribute='message' action='sendmessage'>
         <input type='hidden' name='senderId' value='${loggedInUser.id}'/>
-        <form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'></form:textarea><br>
+        <form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'> </form:textarea><br>
         <input type='hidden' name='receiverId' value='${usersTwats[0].user.id}'/><br>
         <form:errors path='*' cssClass='error'/><br><br>
         <input type='submit' value='Send message to ${usersTwats[0].user.username}'/>

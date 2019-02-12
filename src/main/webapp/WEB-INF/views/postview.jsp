@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href='resources/style.css' rel='stylesheet' type='text/css'>
-    <title>Twat view</title>
+    <title>Post view</title>
 </head>
 <body>
 <p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
@@ -16,7 +16,7 @@
 <h1 class='center'>Social Network</h1>
 <br>
 <div class='center'>
-    <form action='${pageContext.servletContext.contextPath}/social_network'>
+    <form action='${pageContext.servletContext.contextPath}/home'>
         <input type='submit' value='Homepage'/>
     </form>
 </div>

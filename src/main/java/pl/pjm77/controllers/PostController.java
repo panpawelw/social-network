@@ -37,9 +37,9 @@ public class PostController {
 		Post post = postRepository.findById(id);
 		List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(id);
 		model.addAttribute("allComments", allComments);
-		model.addAttribute("twat", post);
+		model.addAttribute("post", post);
 		model.addAttribute("comment", new Comment());
-		return "twatview";
+		return "postview";
 	}
 	
 	@GetMapping("/newpost")
