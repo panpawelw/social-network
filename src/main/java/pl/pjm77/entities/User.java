@@ -43,7 +43,7 @@ public class User{
     private String email;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Post> twats = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
@@ -86,12 +86,12 @@ public class User{
         return id;
     }
 
-    public List<Post> getTwats() {
-        return twats;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setTwats(List<Post> twats) {
-        this.twats = twats;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public List<Comment> getComments() {

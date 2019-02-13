@@ -39,7 +39,7 @@ public class UserController {
 			return "redirect:/";
 		}
 		List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(id);
-		model.addAttribute("usersTwats", usersPosts);
+		model.addAttribute("usersPosts", usersPosts);
 		if(loggedInUser.getId()==id){
 			User user = userRepository.findById(loggedInUser.getId());
 			user.setPassword(null);
@@ -73,7 +73,7 @@ public class UserController {
 			return "redirect:/user?id=" + loggedInUser.getId();
 		}else {
 			List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(loggedInUser.getId());
-			model.addAttribute("usersTwats", usersPosts);
+			model.addAttribute("usersPosts", usersPosts);
 			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
 			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
 			model.addAttribute("receivedMessages", receivedMessages);

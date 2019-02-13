@@ -44,12 +44,12 @@ public class CommentController {
 			comment.setUser(loggedInUser);
 			comment.setPost(postRepository.findById(postId));
 			commentRepository.save(comment);
-			return "redirect:/twat?id=" + comment.getPost().getId();
+			return "redirect:/post?id=" + comment.getPost().getId();
 		}else {
 			Post post = postRepository.findById(postId);
 			List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(postId);
 			model.addAttribute("allComments", allComments);
-			model.addAttribute("twat", post);
+			model.addAttribute("post", post);
 			return "postview";
 		}
 	}

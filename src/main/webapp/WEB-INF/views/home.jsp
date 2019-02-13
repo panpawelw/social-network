@@ -32,7 +32,7 @@
             <tr>
                 <td>${post.created}</td>
                 <td><a href='${pageContext.servletContext.contextPath}/user?id=${post.user.id}'>${post.user.username}</a></td>
-                <td><a href='${pageContext.servletContext.contextPath}/twat?id=${post.id}'>${post.text}</a></td>
+                <td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -25,15 +25,15 @@
 <div class='center'>
     <form:form method='POST' modelAttribute='message' action='sendmessage'>
         <input type='hidden' name='senderId' value='${loggedInUser.id}'/>
-        <form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'> </form:textarea><br>
-        <input type='hidden' name='receiverId' value='${usersTwats[0].user.id}'/><br>
+        <form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'></form:textarea><br>
+        <input type='hidden' name='receiverId' value='${usersPosts[0].user.id}'/><br>
         <form:errors path='*' cssClass='error'/><br><br>
-        <input type='submit' value='Send message to ${usersTwats[0].user.username}'/>
+        <input type='submit' value='Send message to ${usersPosts[0].user.username}'/>
     </form:form>
     <br>
 </div>
 <div class='center'>
-    <h3 class='center'>User ${usersTwats[0].user.username}'s posts</h3>
+    <h3 class='center'>User ${usersPosts[0].user.username}'s posts</h3>
     <br>
     <table class='center'>
         <tr>
@@ -41,11 +41,11 @@
             <th>Text</th>
             <th>Comments</th>
         </tr>
-        <c:forEach items='${usersTwats}' var='twat'>
+        <c:forEach items='${usersPosts}' var='post'>
             <tr>
-                <td>${twat.created}</td>
-                <td><a href='${pageContext.servletContext.contextPath}/twat?id=${twat.id}'>${twat.text}</a></td>
-                <td>${fn:length(twat.comments)}</td>
+                <td>${post.created}</td>
+                <td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
+                <td>${fn:length(post.comments)}</td>
             </tr>
         </c:forEach>
     </table>

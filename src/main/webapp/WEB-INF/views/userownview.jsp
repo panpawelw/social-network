@@ -59,11 +59,11 @@
 					<th>Text</th>
 					<th>&copy;</th>
 				</tr>
-					<c:forEach items='${usersTwats}' var='twat'>
+					<c:forEach items='${usersPosts}' var='post'>
 						<tr>
-							<td>${twat.created}</td>
-							<td><a href='${pageContext.servletContext.contextPath}/twat?id=${twat.id}'>${twat.text}</a></td>
-							<td>${fn:length(twat.comments)}</td>
+							<td>${post.created}</td>
+							<td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
+							<td>${fn:length(post.comments)}</td>
 						</tr>
 					</c:forEach>
 				</table>

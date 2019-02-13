@@ -28,8 +28,8 @@ public class Post {
     private long id;
 
     @Column
-    @NotBlank(message="Can''t post an empty Twat!")
-    @NotNull(message="Can''t post an empty Twat!")
+    @NotBlank(message="Can''t post an empty Post!")
+    @NotNull(message="Can''t post an empty Post!")
     @Size(max = 140)
     private String text;
 

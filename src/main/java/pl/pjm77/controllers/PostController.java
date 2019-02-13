@@ -29,8 +29,8 @@ public class PostController {
 	@Autowired
 	private CommentRepository commentRepository;
 	
-	@GetMapping("twat")
-	public String twatView(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+	@GetMapping("post")
+	public String postView(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
@@ -43,7 +43,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/newpost")
-	public String newTwatForm(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
+	public String newPostForm(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}
@@ -53,7 +53,7 @@ public class PostController {
 	}
 	
 	@PostMapping("/newpost")
-	public String newTwatAction(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Post post, BindingResult result) {
+	public String newPostAction(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Post post, BindingResult result) {
 		if(loggedInUser.getUsername()==null) {
 			return "redirect:/";
 		}

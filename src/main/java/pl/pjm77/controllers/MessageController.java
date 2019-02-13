@@ -52,7 +52,7 @@ public class MessageController {
 			return "redirect:/user?id=" + receiverId;
 		}else {
 			List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(receiverId);
-			model.addAttribute("usersTwats", usersPosts);
+			model.addAttribute("usersPosts", usersPosts);
 			System.out.println("Failure!");
 			return "userview";
 		}
