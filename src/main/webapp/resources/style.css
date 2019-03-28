@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: url('background.jpg') repeat;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
