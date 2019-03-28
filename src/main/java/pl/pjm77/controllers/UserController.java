@@ -23,62 +23,62 @@ import pl.pjm77.repositories.UserRepository;
 
 @Controller
 public class UserController {
-	
-	@Autowired
-	private PostRepository postRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private MessageRepository messageRepository;
 
-	@GetMapping("user")
-	public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
-		if(loggedInUser.getUsername()==null) {
-			return "redirect:/";
-		}
-		List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(id);
-		model.addAttribute("usersPosts", usersPosts);
-		if(loggedInUser.getId()==id){
-			User user = userRepository.findById(loggedInUser.getId());
-			user.setPassword(null);
-			model.addAttribute("user", user);
-			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
-			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
-			model.addAttribute("receivedMessages", receivedMessages);
-			model.addAttribute("sentMessages", sentMessages);
-			return "userownview";
-		}else {
-			model.addAttribute("message", new Message());
-			return "userview";
-		}
-	}
-	
-	@PostMapping("user")
-	public String changeUserDetails(@SessionAttribute ("loggedInUser") User loggedInUser, 
-			@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model){
-		if(loggedInUser.getUsername()==null) {
-			return "redirect:/";
-		}
-		if(!confirm.equals(user.getPassword())){
-			model.addAttribute("outcomeMessage", "Passwords don't match!");
-		}
-		if(!result.hasErrors() && confirm.equals(user.getPassword())) {
-			loggedInUser.setUsername(user.getUsername());
-			loggedInUser.hashPassword(user.getPassword());
-			loggedInUser.setEmail(user.getEmail());
-			userRepository.saveAndFlush(loggedInUser);
-			model.addAttribute("passwordsDontMatch", "Your details have been changed!");
-			return "redirect:/user?id=" + loggedInUser.getId();
-		}else {
-			List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(loggedInUser.getId());
-			model.addAttribute("usersPosts", usersPosts);
-			List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
-			List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
-			model.addAttribute("receivedMessages", receivedMessages);
-			model.addAttribute("sentMessages", sentMessages);
-		    return "userownview";
-		}
-	}
+    @Autowired
+    private PostRepository postRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    @GetMapping("user")
+    public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+        if(loggedInUser.getUsername()==null) {
+            return "redirect:/";
+        }
+        List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(id);
+        model.addAttribute("usersPosts", usersPosts);
+        if(loggedInUser.getId()==id){
+            User user = userRepository.findById(loggedInUser.getId());
+            user.setPassword(null);
+            model.addAttribute("user", user);
+            List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
+            List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+            model.addAttribute("receivedMessages", receivedMessages);
+            model.addAttribute("sentMessages", sentMessages);
+            return "userownview";
+        }else {
+            model.addAttribute("message", new Message());
+            return "userview";
+        }
+    }
+
+    @PostMapping("user")
+    public String changeUserDetails(@SessionAttribute ("loggedInUser") User loggedInUser,
+                                    @ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model){
+        if(loggedInUser.getUsername()==null) {
+            return "redirect:/";
+        }
+        if(!confirm.equals(user.getPassword())){
+            model.addAttribute("outcomeMessage", "Passwords don't match!");
+        }
+        if(!result.hasErrors() && confirm.equals(user.getPassword())) {
+            loggedInUser.setUsername(user.getUsername());
+            loggedInUser.hashPassword(user.getPassword());
+            loggedInUser.setEmail(user.getEmail());
+            userRepository.saveAndFlush(loggedInUser);
+            model.addAttribute("passwordsDontMatch", "Your details have been changed!");
+            return "redirect:/user?id=" + loggedInUser.getId();
+        }else {
+            List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(loggedInUser.getId());
+            model.addAttribute("usersPosts", usersPosts);
+            List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
+            List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+            model.addAttribute("receivedMessages", receivedMessages);
+            model.addAttribute("sentMessages", sentMessages);
+            return "userownview";
+        }
+    }
 }

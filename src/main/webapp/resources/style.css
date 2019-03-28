@@ -1,43 +1,43 @@
 @charset "UTF-8";
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
-	float: left;
-	width: 22%;
-	padding: 1px;
+    float: left;
+    width: 22%;
+    padding: 1px;
 }
 
 .centralcolumn {
-	float: left;
-	width: 56%;
-	padding: 1px;
+    float: left;
+    width: 56%;
+    padding: 1px;
 }
 /* Clear floats after the columns */
 .row:after {
-	content: "";
-	display: table;
-	clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .error {
-	color: red;	
+    color: red;
 }
 
 .center {
-	text-align: center;
+    text-align: center;
 }
 
 .right {
-	text-align: right;
+    text-align: right;
 }
 
 table.center {
-	margin-left:auto; 
-	margin-right:auto;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 table, th, td {

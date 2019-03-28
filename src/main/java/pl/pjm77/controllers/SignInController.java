@@ -18,43 +18,43 @@ import pl.pjm77.repositories.UserRepository;
 @Controller
 @SessionAttributes("loggedInUser")
 public class SignInController {
-	
-	@ModelAttribute("loggedInUser")
-	public User setUpUser() {
-		return new User();
-	}
-	
-	@Autowired
-	private UserRepository userRepository;
 
-	@GetMapping("/")
-	public String signIn(Model model) {
-		model.addAttribute("user", new User());
-		return "signin";
-	}
-	
-	@PostMapping("/")
-	public String signInAction(@ModelAttribute @Valid User user, BindingResult result, Model model) {
-		if(!result.hasErrors()) {
-			User loggedInUser = userRepository.findByUsername(user.getUsername());
-			if(loggedInUser==null){
-				model.addAttribute("usernameError", "This username does not exist!");
-				return "signin";
-			}
-			if(!BCrypt.checkpw(user.getPassword(), loggedInUser.getPassword())) {
-				model.addAttribute("passwordError", "Incorrect password!");
-				return "signin";
-			}
-			model.addAttribute("loggedInUser", loggedInUser);
-			return "redirect:/home";
-		}else {
-		    return "signin";
-		}
-	}
-	
-	@GetMapping("/signout")
-	public String signOut(Model model) {
-		model.addAttribute("loggedInUser", new User());
-		return "redirect:/";
-	}
+    @ModelAttribute("loggedInUser")
+    public User setUpUser() {
+        return new User();
+    }
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/")
+    public String signIn(Model model) {
+        model.addAttribute("user", new User());
+        return "signin";
+    }
+
+    @PostMapping("/")
+    public String signInAction(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+        if(!result.hasErrors()) {
+            User loggedInUser = userRepository.findByUsername(user.getUsername());
+            if(loggedInUser==null){
+                model.addAttribute("usernameError", "This username does not exist!");
+                return "signin";
+            }
+            if(!BCrypt.checkpw(user.getPassword(), loggedInUser.getPassword())) {
+                model.addAttribute("passwordError", "Incorrect password!");
+                return "signin";
+            }
+            model.addAttribute("loggedInUser", loggedInUser);
+            return "redirect:/home";
+        }else {
+            return "signin";
+        }
+    }
+
+    @GetMapping("/signout")
+    public String signOut(Model model) {
+        model.addAttribute("loggedInUser", new User());
+        return "redirect:/";
+    }
 }

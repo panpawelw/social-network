@@ -14,18 +14,18 @@ import pl.pjm77.repositories.PostRepository;
 
 @Controller
 public class HomeController {
-	
-	@Autowired
-	private PostRepository postRepository;
 
-	@GetMapping("/home")
-	public String home(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
-		if(loggedInUser.getUsername()==null) {
-			return "redirect:/";
-		}
-		model.addAttribute("loggedInUser", loggedInUser);
-		List<Post> allPosts = postRepository.findAllByOrderByCreatedDesc();
-		model.addAttribute("allPosts", allPosts);
-		return "home";
-	}
+    @Autowired
+    private PostRepository postRepository;
+
+    @GetMapping("/home")
+    public String home(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
+        if(loggedInUser.getUsername()==null) {
+            return "redirect:/";
+        }
+        model.addAttribute("loggedInUser", loggedInUser);
+        List<Post> allPosts = postRepository.findAllByOrderByCreatedDesc();
+        model.addAttribute("allPosts", allPosts);
+        return "home";
+    }
 }

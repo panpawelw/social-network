@@ -10,10 +10,10 @@ import pl.pjm77.entities.Message;
 
 @Transactional
 public interface MessageRepository extends JpaRepository<Message, Long>{
-	
-	List<Message> findAllByReceiverIdOrderByCreatedDesc(long id);
-	
-	List<Message> findAllBySenderIdOrderByCreatedDesc(long id);
 
-	Message findById(long id);
+    List<Message> findAllByReceiverIdOrderByCreatedDesc(long id);
+
+    List<Message> findAllBySenderIdOrderByCreatedDesc(long id);
+
+    Message findById(long id);
 }

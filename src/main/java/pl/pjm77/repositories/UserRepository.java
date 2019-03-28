@@ -9,7 +9,7 @@ import pl.pjm77.entities.User;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	User findByUsername(String Username);
-	
-	User findById(long id);
+    User findByUsername(String Username);
+
+    User findById(long id);
 }

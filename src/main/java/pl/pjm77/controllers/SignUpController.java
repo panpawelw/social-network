@@ -1,6 +1,5 @@
 package pl.pjm77.controllers;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +16,27 @@ import pl.pjm77.repositories.UserRepository;
 
 @Controller
 public class SignUpController {
-	
-	@Autowired
-	private UserRepository userRepository;
 
-	@GetMapping("/signup")
-	public String signUpForm(HttpServletRequest request, Model model) {
-		model.addAttribute("user", new User());
-		return "signup";
-	}
-	
-	@PostMapping("/signup")
-	public String signUpAction(@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model) {
-		if(!confirm.equals(user.getPassword())){
-			model.addAttribute("passwordsDontMatch", "Passwords don't match!");
-		}
-		if(!result.hasErrors() && confirm.equals(user.getPassword())) {
-			user.hashPassword(user.getPassword());
-			userRepository.save(user);
-			return "redirect:/";
-		}else {
-		    return "signup";
-		}
-	}
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/signup")
+    public String signUpForm(Model model) {
+        model.addAttribute("user", new User());
+        return "signup";
+    }
+
+    @PostMapping("/signup")
+    public String signUpAction(@ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model) {
+        if(!confirm.equals(user.getPassword())){
+            model.addAttribute("passwordsDontMatch", "Passwords don't match!");
+        }
+        if(!result.hasErrors() && confirm.equals(user.getPassword())) {
+            user.hashPassword(user.getPassword());
+            userRepository.save(user);
+            return "redirect:/";
+        }else {
+            return "signup";
+        }
+    }
 }

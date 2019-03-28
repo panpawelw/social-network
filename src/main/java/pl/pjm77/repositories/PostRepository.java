@@ -11,9 +11,9 @@ import pl.pjm77.entities.Post;
 @Transactional
 public interface PostRepository extends JpaRepository<Post,Long>{
 
-	List<Post> findAllByOrderByCreatedDesc();
-	
-	List<Post> findAllByUserIdOrderByCreatedDesc(long id);
-	
-	Post findById(long id);
+    List<Post> findAllByOrderByCreatedDesc();
+
+    List<Post> findAllByUserIdOrderByCreatedDesc(long id);
+
+    Post findById(long id);
 }
