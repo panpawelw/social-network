@@ -4,14 +4,15 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="SocialNetworkPersistenceUnit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/social_network-->
-<!--				?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET" />-->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aa13ivpe37uvuyo.c7wkaetepgwa.eu-central-1.rds.amazonaws.com:3306/ebdb
-                ?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/social_network
+				?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET" />
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aa13ivpe37uvuyo.c7wkaetepgwa.eu-central-1.rds.amazonaws.com:3306/ebdb-->
+<!--                ?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET"/>-->
             <property name="javax.persistence.jdbc.user" value="root" />
-<!--            <property name="javax.persistence.jdbc.password" value="mojSQL" />-->
-            <property name="javax.persistence.jdbc.password" value="mojSQLaws" />
+            <property name="javax.persistence.jdbc.password" value="mojSQL" />
+<!--            <property name="javax.persistence.jdbc.password" value="mojSQLaws" />-->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.schema-generation.database.action" value="create" />
             <property name="hibernate.show_sql" value="true" />
@@ -25,7 +26,7 @@
             <property name="hibernate.c3p0.max_size" value="20"/>
             <property name="hibernate.c3p0.timeout" value="300"/>
             <property name="hibernate.c3p0.max_statements" value="50"/>
-            <property name="hibernate.c3p0.idle_test_period" value="3600"/>
+            <property name="hibernate.c3p0.idle_test_period" value="14400"/>
         </properties>
     </persistence-unit>
 </persistence>
