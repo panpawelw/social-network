@@ -6,13 +6,12 @@
     <persistence-unit name="SocialNetworkPersistenceUnit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/social_network
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/social_network
 				?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET" />
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aa13ivpe37uvuyo.c7wkaetepgwa.eu-central-1.rds.amazonaws.com:3306/ebdb-->
-<!--                ?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET"/>-->
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="mojSQL" />
-<!--            <property name="javax.persistence.jdbc.password" value="mojSQLaws" />-->
+            <property name="javax.persistence.jdbc.user" value="********" />
+<!--            <property name="javax.persistence.jdbc.password" value="********" />-->
+            <property name="javax.persistence.jdbc.password" value="********" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.schema-generation.database.action" value="create" />
             <property name="hibernate.show_sql" value="true" />

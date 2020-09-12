@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
-@Table
+@Table(name = "user")
 public class User{
 
     @Id
