@@ -1,4 +1,4 @@
-package pl.pjm77.entities;
+package com.panpawelw.entities;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

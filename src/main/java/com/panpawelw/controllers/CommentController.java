@@ -1,9 +1,12 @@
-package pl.pjm77.controllers;
+package com.panpawelw.controllers;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.panpawelw.repositories.CommentRepository;
+import com.panpawelw.repositories.PostRepository;
+import com.panpawelw.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import pl.pjm77.entities.Comment;
-import pl.pjm77.entities.Post;
-import pl.pjm77.entities.User;
-import pl.pjm77.repositories.CommentRepository;
-import pl.pjm77.repositories.PostRepository;
-import pl.pjm77.repositories.UserRepository;
+import com.panpawelw.entities.Comment;
+import com.panpawelw.entities.Post;
+import com.panpawelw.entities.User;
 
 @Controller
 public class CommentController {

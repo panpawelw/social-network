@@ -1,4 +1,4 @@
-package pl.pjm77.entities;
+package com.panpawelw.entities;
 
 import java.sql.Timestamp;
 
@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "message")
-public class Message {
+@Table(name = "comment")
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,22 +25,19 @@ public class Message {
     @Column(nullable = false)
     private Timestamp created;
 
-    @Column(nullable = false, columnDefinition = "boolean default true")
-    private boolean unread = true;
-
-    @Column(nullable = false, columnDefinition = "TEXT")
-    @NotBlank(message="Can''t post an empty message!")
-    @NotNull(message="Can''t post an empty message!")
-    @Size(max=21845)
+    @NotBlank(message="Can''t post an empty comment!")
+    @NotNull(message="Can''t post an empty comment!")
+    @Column(nullable = false)
+    @Size(max = 60)
     private String text;
 
     @ManyToOne
     @JoinColumn
-    private User sender;
+    private User user;
 
     @ManyToOne
     @JoinColumn
-    private User receiver;
+    private Post post;
 
     public Timestamp getCreated() {
         return created;
@@ -48,14 +45,6 @@ public class Message {
 
     public void setCreated(Timestamp created) {
         this.created = created;
-    }
-
-    public boolean isUnread() {
-        return unread;
-    }
-
-    public void setUnread(boolean unread) {
-        this.unread = unread;
     }
 
     public String getText() {
@@ -66,20 +55,20 @@ public class Message {
         this.text = text;
     }
 
-    public User getSender() {
-        return sender;
+    public User getUser() {
+        return user;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public User getReceiver() {
-        return receiver;
+    public Post getPost() {
+        return post;
     }
 
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public long getId() {

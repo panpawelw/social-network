@@ -1,4 +1,4 @@
-package pl.pjm77.config;
+package com.panpawelw.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
@@ -20,9 +20,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="pl.pjm77")
+@ComponentScan(basePackages="com.panpawelw")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages="pl.pjm77.repositories")
+@EnableJpaRepositories(basePackages="com.panpawelw")
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean

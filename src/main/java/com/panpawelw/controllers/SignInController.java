@@ -1,7 +1,8 @@
-package pl.pjm77.controllers;
+package com.panpawelw.controllers;
 
 import javax.validation.Valid;
 
+import com.panpawelw.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pl.pjm77.entities.User;
-import pl.pjm77.repositories.UserRepository;
+import com.panpawelw.entities.User;
 
 @Controller
 @SessionAttributes("loggedInUser")

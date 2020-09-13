@@ -1,4 +1,4 @@
-package pl.pjm77.repositories;
+package com.panpawelw.repositories;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pl.pjm77.entities.Post;
+import com.panpawelw.entities.Post;
 
 @Transactional
 public interface PostRepository extends JpaRepository<Post,Long>{

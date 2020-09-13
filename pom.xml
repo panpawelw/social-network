@@ -2,11 +2,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pl.pjm77</groupId>
+    <groupId>com.panpawelw</groupId>
     <artifactId>Social-Network</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Social Network Maven Webapp</name>
+    <name>Social Network</name>
     <url>http://maven.apache.org</url>
     <properties>
         <spring-version>5.2.6.RELEASE</spring-version>
@@ -26,11 +26,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.10.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-c3p0</artifactId>
             <version>5.4.10.Final</version>
         </dependency>
         <dependency>
@@ -61,12 +56,12 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>[8.0.16,]</version>
+            <version>8.0.16</version>
         </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
-            <version>[0.4,]</version>
+            <version>0.4</version>
         </dependency>
     </dependencies>
     <build>

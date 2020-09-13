@@ -1,4 +1,4 @@
-package pl.pjm77.entities;
+package com.panpawelw.entities;
 
 import java.util.ArrayList;
 import java.util.List;

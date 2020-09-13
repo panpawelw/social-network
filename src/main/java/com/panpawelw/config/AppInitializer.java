@@ -1,8 +1,6 @@
-package pl.pjm77.config;
+package com.panpawelw.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import pl.pjm77.config.AppConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
