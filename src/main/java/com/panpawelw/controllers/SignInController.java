@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import com.panpawelw.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,13 +18,16 @@ import com.panpawelw.entities.User;
 @SessionAttributes("loggedInUser")
 public class SignInController {
 
+    private final UserRepository userRepository;
+
+    public SignInController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @ModelAttribute("loggedInUser")
     public User setUpUser() {
         return new User();
     }
-
-    @Autowired
-    private UserRepository userRepository;
 
     @GetMapping("/")
     public String signIn(Model model) {

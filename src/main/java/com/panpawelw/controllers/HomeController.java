@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.panpawelw.entities.User;
 import com.panpawelw.repositories.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +14,11 @@ import com.panpawelw.entities.Post;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public HomeController(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     @GetMapping("/home")
     public String home(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {

@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import com.panpawelw.repositories.MessageRepository;
 import com.panpawelw.repositories.PostRepository;
 import com.panpawelw.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,14 +23,17 @@ import com.panpawelw.entities.User;
 @Controller
 public class UserController {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private MessageRepository messageRepository;
+    private final MessageRepository messageRepository;
+
+    public UserController(PostRepository postRepository, UserRepository userRepository, MessageRepository messageRepository) {
+        this.postRepository = postRepository;
+        this.userRepository = userRepository;
+        this.messageRepository = messageRepository;
+    }
 
     @GetMapping("user")
     public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {

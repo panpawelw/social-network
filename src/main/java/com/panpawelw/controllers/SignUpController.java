@@ -3,7 +3,6 @@ package com.panpawelw.controllers;
 import javax.validation.Valid;
 
 import com.panpawelw.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +16,11 @@ import com.panpawelw.entities.User;
 @Controller
 public class SignUpController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public SignUpController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping("/signup")
     public String signUpForm(Model model) {

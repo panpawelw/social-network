@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import com.panpawelw.repositories.CommentRepository;
 import com.panpawelw.repositories.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,11 +22,14 @@ import com.panpawelw.entities.User;
 @Controller
 public class PostController {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    @Autowired
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
+
+    public PostController(PostRepository postRepository, CommentRepository commentRepository) {
+        this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
+    }
 
     @GetMapping("post")
     public String postView(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
