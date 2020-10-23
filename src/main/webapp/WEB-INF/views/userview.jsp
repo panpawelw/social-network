@@ -23,7 +23,7 @@
 </div>
 <br>
 <div class='center'>
-    <form:form method='POST' modelAttribute='message' action='sendmessage'>
+    <form:form method='POST' modelAttribute='message' action='message'>
         <input type='hidden' name='senderId' value='${loggedInUser.id}'/>
         <form:textarea path='text' cols='31' rows='4' placeholder='Enter message...'></form:textarea><br>
         <input type='hidden' name='receiverId' value='${usersPosts[0].user.id}'/><br>

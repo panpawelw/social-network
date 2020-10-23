@@ -30,7 +30,7 @@ public class CommentController {
         this.postRepository = postRepository;
     }
 
-    @PostMapping("addcomment")
+    @PostMapping("/comment")
     public String addComment(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Comment comment, BindingResult result, @RequestParam long postId, Model model) {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";

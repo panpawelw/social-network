@@ -54,7 +54,7 @@
         </c:forEach>
     </table>
     <br>
-    <form:form method='POST' modelAttribute='comment' action='addcomment'>
+    <form:form method='POST' modelAttribute='comment' action='comment'>
         <form:textarea path='text' cols='31' rows='2' maxlength='60' placeholder='Enter comment...'></form:textarea><br>
         <input type='hidden' name='postId' value='${post.id}'/><br>
         <form:errors path='*' cssClass='error'/><br><br>

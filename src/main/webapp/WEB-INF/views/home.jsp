@@ -16,7 +16,7 @@
 <h3 class='center'>All posts</h3>
 <br>
 <div class='center'>
-    <form action='newpost' method='GET'>
+    <form action='post' method='GET'>
         <input type='submit' value='New post'/>
     </form>
 </div>

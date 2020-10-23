@@ -31,12 +31,18 @@ public class PostController {
         this.commentRepository = commentRepository;
     }
 
-    @GetMapping("post")
-    public String postView(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+    @GetMapping("/post")
+    public String postView(@SessionAttribute("loggedInUser") User loggedInUser,
+                           @RequestParam(required = false) Long id, Model model) {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
         }
-        Post post = postRepository.findById(id);
+        if(id == null) {
+            model.addAttribute("post", new Post());
+            model.addAttribute("loggedInUser", loggedInUser);
+            return "newpost";
+        }
+        Post post = postRepository.findById((long)id);
         List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(id);
         model.addAttribute("allComments", allComments);
         model.addAttribute("post", post);
@@ -44,17 +50,7 @@ public class PostController {
         return "postview";
     }
 
-    @GetMapping("/newpost")
-    public String newPostForm(@SessionAttribute("loggedInUser") User loggedInUser, Model model) {
-        if(loggedInUser.getUsername()==null) {
-            return "redirect:/";
-        }
-        model.addAttribute("post", new Post());
-        model.addAttribute("loggedInUser", loggedInUser);
-        return "newpost";
-    }
-
-    @PostMapping("/newpost")
+    @PostMapping("/post")
     public String newPostAction(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Post post, BindingResult result) {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
@@ -69,6 +65,5 @@ public class PostController {
         }else {
             return "newpost";
         }
-
     }
 }

@@ -35,7 +35,7 @@ public class UserController {
         this.messageRepository = messageRepository;
     }
 
-    @GetMapping("user")
+    @GetMapping("/user")
     public String userView(@SessionAttribute ("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
@@ -57,7 +57,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("user")
+    @PostMapping("/user")
     public String changeUserDetails(@SessionAttribute ("loggedInUser") User loggedInUser,
                                     @ModelAttribute @Valid User user, BindingResult result, @RequestParam String confirm, Model model){
         if(loggedInUser.getUsername()==null) {

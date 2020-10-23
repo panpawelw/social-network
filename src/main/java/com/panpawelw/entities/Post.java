@@ -25,7 +25,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     @NotBlank(message="Can''t post an empty Post!")
@@ -59,7 +59,7 @@ public class Post {
         this.created = created;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

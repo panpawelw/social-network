@@ -35,7 +35,21 @@ public class MessageController {
         this.postRepository = postRepository;
     }
 
-    @PostMapping("sendmessage")
+    @GetMapping("/message")
+    public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
+        if(loggedInUser.getUsername()==null) {
+            return "redirect:/";
+        }
+        Message message = messageRepository.findById(id);
+        if(loggedInUser.getId()==message.getReceiver().getId()) {
+            message.setUnread(false);
+            messageRepository.saveAndFlush(message);
+        }
+        model.addAttribute("message", message);
+        return "messageview";
+    }
+
+    @PostMapping("/message")
     public String sendMessage(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Message message, BindingResult result,
                               @RequestParam long senderId, String text, long receiverId, Model model) {
         if(loggedInUser.getUsername()==null) {
@@ -58,20 +72,5 @@ public class MessageController {
             System.out.println("Failure!");
             return "userview";
         }
-
-    }
-
-    @GetMapping("message")
-    public String viewMessage(@SessionAttribute("loggedInUser") User loggedInUser, @RequestParam long id, Model model) {
-        if(loggedInUser.getUsername()==null) {
-            return "redirect:/";
-        }
-        Message message = messageRepository.findById(id);
-        if(loggedInUser.getId()==message.getReceiver().getId()) {
-            message.setUnread(false);
-            messageRepository.saveAndFlush(message);
-        }
-        model.addAttribute("message", message);
-        return "messageview";
     }
 }
