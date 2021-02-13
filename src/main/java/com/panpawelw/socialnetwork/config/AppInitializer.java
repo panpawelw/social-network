@@ -1,4 +1,4 @@
-package com.panpawelw.config;
+package com.panpawelw.socialnetwork.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

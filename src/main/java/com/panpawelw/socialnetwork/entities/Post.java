@@ -1,43 +1,55 @@
-package com.panpawelw.entities;
+package com.panpawelw.socialnetwork.entities;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "post")
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
+    @Column
+    @NotBlank(message="Can''t post an empty Post!")
+    @NotNull(message="Can''t post an empty Post!")
+    @Size(max = 140)
+    private String text;
 
     @Column(nullable = false)
     private Timestamp created;
-
-    @NotBlank(message="Can''t post an empty comment!")
-    @NotNull(message="Can''t post an empty comment!")
-    @Column(nullable = false)
-    @Size(max = 60)
-    private String text;
 
     @ManyToOne
     @JoinColumn
     private User user;
 
-    @ManyToOne
-    @JoinColumn
-    private Post post;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public Timestamp getCreated() {
         return created;
@@ -47,12 +59,8 @@ public class Comment {
         this.created = created;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public Long getId() {
+        return id;
     }
 
     public User getUser() {
@@ -63,15 +71,11 @@ public class Comment {
         this.user = user;
     }
 
-    public Post getPost() {
-        return post;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
-
-    public long getId() {
-        return id;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

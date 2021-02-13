@@ -1,4 +1,4 @@
-package com.panpawelw.config;
+package com.panpawelw.socialnetwork.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;

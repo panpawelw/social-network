@@ -1,15 +1,14 @@
-package com.panpawelw.controllers;
+package com.panpawelw.socialnetwork.controllers;
 
 import java.util.List;
 
-import com.panpawelw.entities.User;
-import com.panpawelw.repositories.PostRepository;
+import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.repositories.PostRepository;
+import com.panpawelw.socialnetwork.entities.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
-
-import com.panpawelw.entities.Post;
 
 @Controller
 public class HomeController {

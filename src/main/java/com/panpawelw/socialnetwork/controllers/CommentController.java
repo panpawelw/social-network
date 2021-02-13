@@ -1,11 +1,14 @@
-package com.panpawelw.controllers;
+package com.panpawelw.socialnetwork.controllers;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.repositories.CommentRepository;
-import com.panpawelw.repositories.PostRepository;
+import com.panpawelw.socialnetwork.repositories.CommentRepository;
+import com.panpawelw.socialnetwork.repositories.PostRepository;
+import com.panpawelw.socialnetwork.entities.Comment;
+import com.panpawelw.socialnetwork.entities.Post;
+import com.panpawelw.socialnetwork.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,10 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
-
-import com.panpawelw.entities.Comment;
-import com.panpawelw.entities.Post;
-import com.panpawelw.entities.User;
 
 @Controller
 public class CommentController {

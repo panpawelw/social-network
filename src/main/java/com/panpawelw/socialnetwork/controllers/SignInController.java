@@ -1,8 +1,9 @@
-package com.panpawelw.controllers;
+package com.panpawelw.socialnetwork.controllers;
 
 import javax.validation.Valid;
 
-import com.panpawelw.repositories.UserRepository;
+import com.panpawelw.socialnetwork.repositories.UserRepository;
+import com.panpawelw.socialnetwork.entities.User;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.panpawelw.entities.User;
 
 @Controller
 @SessionAttributes("loggedInUser")

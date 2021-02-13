@@ -1,12 +1,15 @@
-package com.panpawelw.controllers;
+package com.panpawelw.socialnetwork.controllers;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.repositories.MessageRepository;
-import com.panpawelw.repositories.PostRepository;
-import com.panpawelw.repositories.UserRepository;
+import com.panpawelw.socialnetwork.repositories.MessageRepository;
+import com.panpawelw.socialnetwork.repositories.PostRepository;
+import com.panpawelw.socialnetwork.repositories.UserRepository;
+import com.panpawelw.socialnetwork.entities.Message;
+import com.panpawelw.socialnetwork.entities.Post;
+import com.panpawelw.socialnetwork.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
-
-import com.panpawelw.entities.Message;
-import com.panpawelw.entities.Post;
-import com.panpawelw.entities.User;
 
 @Controller
 public class MessageController {

@@ -1,4 +1,4 @@
-package com.panpawelw.entities;
+package com.panpawelw.socialnetwork.entities;
 
 import java.util.ArrayList;
 import java.util.List;

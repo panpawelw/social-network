@@ -1,12 +1,11 @@
-package com.panpawelw.repositories;
+package com.panpawelw.socialnetwork.repositories;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.panpawelw.socialnetwork.entities.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.panpawelw.entities.Message;
 
 @Transactional
 public interface MessageRepository extends JpaRepository<Message, Long>{
