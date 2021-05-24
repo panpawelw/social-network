@@ -7,25 +7,24 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/social_network
-				?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=EET" />
-            <property name="javax.persistence.jdbc.user" value="********" />
-            <property name="javax.persistence.jdbc.password" value="********" />
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.schema-generation.database.action" value="update" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-            <property name="hibernate.connection.useUnicode" value="true" />
-            <property name="hibernate.connection.characterEncoding"
-                      value="utf8" />
-            <property name="hibernate.connection.CharSet" value="utf8" />
+                      value="jdbc:mysql://localhost:3306/social_network?useUnicode=true&amp;
+                      useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;
+                      serverTimezone=EET"/>
+            <property name="javax.persistence.jdbc.user" value="********"/>
+            <property name="javax.persistence.jdbc.password" value="********"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.connection.useUnicode" value="true"/>
+            <property name="hibernate.connection.characterEncoding" value="utf8"/>
+            <property name="hibernate.connection.CharSet" value="utf8"/>
             <property name="hibernate.c3p0.min_size" value="5"/>
             <property name="hibernate.c3p0.max_size" value="20"/>
             <property name="hibernate.c3p0.timeout" value="300"/>
             <property name="hibernate.c3p0.max_statements" value="50"/>
             <property name="hibernate.c3p0.idle_test_period" value="14400"/>
-
         </properties>
     </persistence-unit>
 </persistence>
