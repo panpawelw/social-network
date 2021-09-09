@@ -15,11 +15,15 @@ public class UserService {
     this.repository = repository;
   }
 
-  public User findUserById(long id) {
+  public User findById(long id) {
     return repository.findById(id);
   }
 
-  public long saveUser(User user) {
+  public User findByUsername(String username) {
+    return repository.findByUsername(username);
+  }
+
+  public long save(User user) {
     return repository.saveAndFlush(user).getId();
   }
 }
