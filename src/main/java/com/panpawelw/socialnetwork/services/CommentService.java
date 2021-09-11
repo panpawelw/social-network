@@ -2,6 +2,7 @@ package com.panpawelw.socialnetwork.services;
 
 import com.panpawelw.socialnetwork.entities.Comment;
 import com.panpawelw.socialnetwork.repositories.CommentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class CommentService {
 
   private final CommentRepository repository;
 
+  @Autowired
   public CommentService(CommentRepository repository) {
     this.repository = repository;
   }
