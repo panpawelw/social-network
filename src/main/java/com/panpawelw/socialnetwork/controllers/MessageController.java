@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.MessageRepository;
-import com.panpawelw.socialnetwork.repositories.PostRepository;
 import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.Message;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.MessageService;
+import com.panpawelw.socialnetwork.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,16 +22,17 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Controller
 public class MessageController {
 
-    private final MessageRepository messageRepository;
+    private final MessageService messageService;
 
     private final UserRepository userRepository;
 
-    private final PostRepository postRepository;
+    private final PostService postService;
 
-    public MessageController(MessageRepository messageRepository, UserRepository userRepository, PostRepository postRepository) {
-        this.messageRepository = messageRepository;
+    public MessageController(MessageService messageService, UserRepository userRepository,
+                             PostService postService) {
+        this.messageService = messageService;
         this.userRepository = userRepository;
-        this.postRepository = postRepository;
+        this.postService = postService;
     }
 
     @GetMapping("/message")
@@ -39,10 +40,10 @@ public class MessageController {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
         }
-        Message message = messageRepository.findById(id);
+        Message message = messageService.findById(id);
         if(loggedInUser.getId()==message.getReceiver().getId()) {
             message.setUnread(false);
-            messageRepository.saveAndFlush(message);
+            messageService.save(message);
         }
         model.addAttribute("message", message);
         return "messageview";
@@ -62,11 +63,11 @@ public class MessageController {
             message.setSender(userRepository.findById(senderId));
             message.setText(text);
             message.setReceiver(userRepository.findById(receiverId));
-            messageRepository.saveAndFlush(message);
+            messageService.save(message);
             System.out.println("Success!");
             return "redirect:/user?id=" + receiverId;
         }else {
-            List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(receiverId);
+            List<Post> usersPosts = postService.findAllByUser(receiverId);
             model.addAttribute("usersPosts", usersPosts);
             System.out.println("Failure!");
             return "userview";

@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.MessageRepository;
-import com.panpawelw.socialnetwork.repositories.PostRepository;
 import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.Message;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.MessageService;
+import com.panpawelw.socialnetwork.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,16 +22,16 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Controller
 public class UserController {
 
-    private final PostRepository postRepository;
+    private final PostService postService;
 
     private final UserRepository userRepository;
 
-    private final MessageRepository messageRepository;
+    private final MessageService messageService;
 
-    public UserController(PostRepository postRepository, UserRepository userRepository, MessageRepository messageRepository) {
-        this.postRepository = postRepository;
+    public UserController(PostService postService, UserRepository userRepository, MessageService messageService) {
+        this.postService = postService;
         this.userRepository = userRepository;
-        this.messageRepository = messageRepository;
+        this.messageService = messageService;
     }
 
     @GetMapping("/user")
@@ -39,14 +39,14 @@ public class UserController {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
         }
-        List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(id);
+        List<Post> usersPosts = postService.findAllByUser(id);
         model.addAttribute("usersPosts", usersPosts);
         if(loggedInUser.getId()==id){
             User user = userRepository.findById(loggedInUser.getId());
             user.setPassword(null);
             model.addAttribute("user", user);
-            List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
-            List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+            List<Message> receivedMessages = messageService.findByReceiver(loggedInUser.getId());
+            List<Message> sentMessages = messageService.findBySender(loggedInUser.getId());
             model.addAttribute("receivedMessages", receivedMessages);
             model.addAttribute("sentMessages", sentMessages);
             return "userownview";
@@ -73,10 +73,10 @@ public class UserController {
             model.addAttribute("passwordsDontMatch", "Your details have been changed!");
             return "redirect:/user?id=" + loggedInUser.getId();
         }else {
-            List<Post> usersPosts = postRepository.findAllByUserIdOrderByCreatedDesc(loggedInUser.getId());
+            List<Post> usersPosts = postService.findAllByUser(loggedInUser.getId());
             model.addAttribute("usersPosts", usersPosts);
-            List<Message> receivedMessages = messageRepository.findAllByReceiverIdOrderByCreatedDesc(loggedInUser.getId());
-            List<Message> sentMessages = messageRepository.findAllBySenderIdOrderByCreatedDesc(loggedInUser.getId());
+            List<Message> receivedMessages = messageService.findByReceiver(loggedInUser.getId());
+            List<Message> sentMessages = messageService.findBySender(loggedInUser.getId());
             model.addAttribute("receivedMessages", receivedMessages);
             model.addAttribute("sentMessages", sentMessages);
             return "userownview";

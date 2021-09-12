@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.CommentRepository;
-import com.panpawelw.socialnetwork.repositories.PostRepository;
 import com.panpawelw.socialnetwork.entities.Comment;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.CommentService;
+import com.panpawelw.socialnetwork.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Controller
 public class CommentController {
 
-    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
-    private final PostRepository postRepository;
+    private final PostService postService;
 
-    public CommentController(CommentRepository commentRepository, PostRepository postRepository) {
-        this.commentRepository = commentRepository;
-        this.postRepository = postRepository;
+    public CommentController(CommentService commentService, PostService postService) {
+        this.commentService = commentService;
+        this.postService = postService;
     }
 
     @PostMapping("/comment")
@@ -39,12 +39,12 @@ public class CommentController {
             java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
             comment.setCreated(created);
             comment.setUser(loggedInUser);
-            comment.setPost(postRepository.findById(postId));
-            commentRepository.save(comment);
+            comment.setPost(postService.findById(postId));
+            commentService.save(comment);
             return "redirect:/post?id=" + comment.getPost().getId();
         }else {
-            Post post = postRepository.findById(postId);
-            List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(postId);
+            Post post = postService.findById(postId);
+            List<Comment> allComments = commentService.findAllByPostId(postId);
             model.addAttribute("allComments", allComments);
             model.addAttribute("post", post);
             return "postview";

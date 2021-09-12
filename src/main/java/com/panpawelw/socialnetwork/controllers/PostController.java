@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.CommentRepository;
-import com.panpawelw.socialnetwork.repositories.PostRepository;
 import com.panpawelw.socialnetwork.entities.Comment;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.CommentService;
+import com.panpawelw.socialnetwork.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Controller
 public class PostController {
 
-    private final PostRepository postRepository;
+    private final PostService postService;
 
-    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
-    public PostController(PostRepository postRepository, CommentRepository commentRepository) {
-        this.postRepository = postRepository;
-        this.commentRepository = commentRepository;
+    public PostController(PostService postService, CommentService commentService) {
+        this.postService = postService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/post")
@@ -41,8 +41,8 @@ public class PostController {
             model.addAttribute("loggedInUser", loggedInUser);
             return "newpost";
         }
-        Post post = postRepository.findById((long)id);
-        List<Comment> allComments = commentRepository.findAllByPostIdOrderByCreatedDesc(id);
+        Post post = postService.findById((long)id);
+        List<Comment> allComments = commentService.findAllByPostId(id);
         model.addAttribute("allComments", allComments);
         model.addAttribute("post", post);
         model.addAttribute("comment", new Comment());
@@ -59,7 +59,7 @@ public class PostController {
             java.util.Date date = new java.util.Date();
             java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
             post.setCreated(created);
-            postRepository.saveAndFlush(post);
+            postService.save(post);
             return "redirect:/home";
         }else {
             return "newpost";
