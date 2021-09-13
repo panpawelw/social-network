@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.Message;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
 import com.panpawelw.socialnetwork.services.MessageService;
 import com.panpawelw.socialnetwork.services.PostService;
+import com.panpawelw.socialnetwork.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,14 +24,14 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     private final PostService postService;
 
-    public MessageController(MessageService messageService, UserRepository userRepository,
+    public MessageController(MessageService messageService, UserService userService,
                              PostService postService) {
         this.messageService = messageService;
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.postService = postService;
     }
 
@@ -60,9 +60,9 @@ public class MessageController {
             java.util.Date date = new java.util.Date();
             java.sql.Timestamp created = new java.sql.Timestamp(date.getTime());
             message.setCreated(created);
-            message.setSender(userRepository.findById(senderId));
+            message.setSender(userService.findById(senderId));
             message.setText(text);
-            message.setReceiver(userRepository.findById(receiverId));
+            message.setReceiver(userService.findById(receiverId));
             messageService.save(message);
             System.out.println("Success!");
             return "redirect:/user?id=" + receiverId;

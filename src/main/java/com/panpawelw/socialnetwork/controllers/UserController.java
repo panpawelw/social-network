@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.Message;
 import com.panpawelw.socialnetwork.entities.Post;
 import com.panpawelw.socialnetwork.entities.User;
 import com.panpawelw.socialnetwork.services.MessageService;
 import com.panpawelw.socialnetwork.services.PostService;
+import com.panpawelw.socialnetwork.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,13 +24,13 @@ public class UserController {
 
     private final PostService postService;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     private final MessageService messageService;
 
-    public UserController(PostService postService, UserRepository userRepository, MessageService messageService) {
+    public UserController(PostService postService, UserService userService, MessageService messageService) {
         this.postService = postService;
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.messageService = messageService;
     }
 
@@ -42,7 +42,7 @@ public class UserController {
         List<Post> usersPosts = postService.findAllByUser(id);
         model.addAttribute("usersPosts", usersPosts);
         if(loggedInUser.getId()==id){
-            User user = userRepository.findById(loggedInUser.getId());
+            User user = userService.findById(loggedInUser.getId());
             user.setPassword(null);
             model.addAttribute("user", user);
             List<Message> receivedMessages = messageService.findByReceiver(loggedInUser.getId());
@@ -69,7 +69,7 @@ public class UserController {
             loggedInUser.setUsername(user.getUsername());
             loggedInUser.hashPassword(user.getPassword());
             loggedInUser.setEmail(user.getEmail());
-            userRepository.saveAndFlush(loggedInUser);
+            userService.save(loggedInUser);
             model.addAttribute("passwordsDontMatch", "Your details have been changed!");
             return "redirect:/user?id=" + loggedInUser.getId();
         }else {

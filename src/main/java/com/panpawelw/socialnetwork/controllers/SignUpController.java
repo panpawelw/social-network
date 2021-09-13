@@ -2,8 +2,8 @@ package com.panpawelw.socialnetwork.controllers;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SignUpController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public SignUpController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public SignUpController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/signup")
@@ -34,7 +34,7 @@ public class SignUpController {
         }
         if(!result.hasErrors() && confirm.equals(user.getPassword())) {
             user.hashPassword(user.getPassword());
-            userRepository.save(user);
+            userService.save(user);
             return "redirect:/";
         }else {
             return "signup";

@@ -2,8 +2,8 @@ package com.panpawelw.socialnetwork.controllers;
 
 import javax.validation.Valid;
 
-import com.panpawelw.socialnetwork.repositories.UserRepository;
 import com.panpawelw.socialnetwork.entities.User;
+import com.panpawelw.socialnetwork.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("loggedInUser")
 public class SignInController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public SignInController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public SignInController(UserService userService) {
+        this.userService = userService;
     }
 
     @ModelAttribute("loggedInUser")
@@ -37,7 +37,7 @@ public class SignInController {
     @PostMapping("/")
     public String signInAction(@ModelAttribute @Valid User user, BindingResult result, Model model) {
         if(!result.hasErrors()) {
-            User loggedInUser = userRepository.findByUsername(user.getUsername());
+            User loggedInUser = userService.findByUsername(user.getUsername());
             if(loggedInUser==null){
                 model.addAttribute("usernameError", "This username does not exist!");
                 return "signin";
